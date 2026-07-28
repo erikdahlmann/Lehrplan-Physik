@@ -85,7 +85,13 @@ header.top{border-bottom:1px solid var(--line);background:var(--card)}
 .hinweis strong{color:var(--ink);display:block;font-size:1.05rem;margin-bottom:6px}
 
 .uv-list{display:flex;flex-direction:column;gap:14px;padding-bottom:56px}
-.uv{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;border-left:6px solid var(--feld,var(--b1))}
+.uv{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:box-shadow .18s,border-color .18s;border-left:6px solid var(--feld,var(--b1))}
+.uv:hover{box-shadow:var(--shadow)}
+.uv[data-open="true"]{box-shadow:var(--shadow);border-color:color-mix(in srgb,var(--feld,var(--b1)) 38%,var(--line))}
+@media (prefers-reduced-motion:reduce){.uv{transition:none}}
+.uv-head:hover .uv-num{transform:scale(1.06)}
+.uv-num{transition:transform .18s cubic-bezier(.16,1,.3,1)}
+@media (prefers-reduced-motion:reduce){.uv-num{transition:none}}
 .uv-head{display:flex;align-items:center;gap:16px;width:100%;appearance:none;border:0;background:transparent;
   font-family:inherit;text-align:left;padding:16px 18px;cursor:pointer;color:var(--ink)}
 .uv-head:focus-visible{outline:3px solid var(--blue);outline-offset:-3px}
@@ -1311,13 +1317,13 @@ const DATA = JSON.parse(document.getElementById("physik-daten").textContent);
 
 const STUFEN = ["6","8","9","10","EF","Q"];
 const TILE = {"6":"var(--b2)","8":"var(--b3)","9":"var(--b1)","10":"var(--b4)","EF":"var(--b2)","Q":"var(--b5)"};
-const SUB = {"6":"Klasse","8":"Klasse","9":"Klasse","10":"Klasse","EF":"Einführungsphase","Q":"Qualifikationsphase"};
+const SUB = {"6":"Erprobungsstufe","8":"Mittelstufe","9":"Mittelstufe","10":"Mittelstufe","EF":"Einführungsphase","Q":"Qualifikationsphase"};
 const NUM = {"6":"6","8":"8","9":"9","10":"10","EF":"EF","Q":"Q1/Q2"};
 const LABEL = {"6":"Klasse 6","8":"Klasse 8","9":"Klasse 9","10":"Klasse 10",
                "EF":"Einführungsphase (EF)","Q":"Qualifikationsphase (Q1/Q2)"};
 
 const INTROS = {
-  "6":"Der Einstieg in die Physik: Temperatur und Wärme, elektrische Stromkreise, Magnete, Licht und Sehen.",
+  "6":"Der Einstieg in die Physik: Temperatur und Wärme, elektrischer Strom und Magnetismus, Schall und Hören, Licht und Sehen.",
   "8":"Optische Instrumente von der Lochkamera bis zum Fernrohr, Reflexion und Brechung, dazu Bewegung, Kraft und Energie.",
   "9":"Druck und Auftrieb in Flüssigkeiten und Gasen, danach die Grundlagen der Elektrizitätslehre.",
   "10":"Ionisierende Strahlung und Kernenergie, Elektromotor, Generator und die Energieversorgung der Zukunft.",
