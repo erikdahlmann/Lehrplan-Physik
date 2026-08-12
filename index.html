@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Physik am Paul-Klee-Gymnasium · Schulinterner Lehrplan Klasse 6 bis Q2</title>
 <meta name="description" content="Der schulinterne Lehrplan Physik des Paul-Klee-Gymnasiums Overath: alle Themen und Kompetenzen von Klasse 6 bis zum Abitur.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23fbfaf7'/%3E%3Crect x='5' y='13' width='6' height='6' rx='1.6' fill='%23e2653f'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%233f6fae'/%3E%3Crect x='21' y='13' width='6' height='6' rx='1.6' fill='%23f0b429'/%3E%3C/svg%3E">
 <style>
 :root{
   --ink:#22222a;
@@ -75,7 +76,7 @@ header.top{border-bottom:1px solid var(--line);background:var(--card)}
 .view-head h2{font-size:clamp(1.4rem,3vw,2rem);letter-spacing:-.015em;font-weight:800}
 .kurs-toggle{display:inline-flex;border:1px solid var(--line);border-radius:999px;background:var(--card);padding:3px}
 .kurs-toggle button{appearance:none;border:0;background:transparent;font-family:inherit;font-size:.85rem;font-weight:700;
-  color:var(--ink-soft);padding:6px 16px;border-radius:999px;cursor:pointer}
+  color:var(--ink-soft);padding:9px 18px;border-radius:999px;cursor:pointer;min-height:38px}
 .kurs-toggle button[aria-pressed="true"]{background:var(--ink);color:#fff}
 .kurs-toggle button:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
 .view p.intro{color:var(--ink-soft);max-width:62ch;margin-bottom:26px}
@@ -85,7 +86,7 @@ header.top{border-bottom:1px solid var(--line);background:var(--card)}
 .hinweis strong{color:var(--ink);display:block;font-size:1.05rem;margin-bottom:6px}
 
 .uv-list{display:flex;flex-direction:column;gap:14px;padding-bottom:56px}
-.uv{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:box-shadow .18s,border-color .18s;border-left:6px solid var(--feld,var(--b1))}
+.uv{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:box-shadow .18s,border-color .18s}
 .uv:hover{box-shadow:var(--shadow)}
 .uv[data-open="true"]{box-shadow:var(--shadow);border-color:color-mix(in srgb,var(--feld,var(--b1)) 38%,var(--line))}
 @media (prefers-reduced-motion:reduce){.uv{transition:none}}
@@ -96,10 +97,13 @@ header.top{border-bottom:1px solid var(--line);background:var(--card)}
   font-family:inherit;text-align:left;padding:16px 18px;cursor:pointer;color:var(--ink)}
 .uv-head:focus-visible{outline:3px solid var(--blue);outline-offset:-3px}
 .uv-num{flex:0 0 auto;width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;
-  font-weight:800;font-size:.9rem;background:var(--feld-soft,var(--b1-soft));color:var(--ink)}
+  font-weight:800;font-size:.9rem;background:var(--feld-soft);color:var(--ink);
+  box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--feld) 34%,transparent)}
 .uv-titel{flex:1 1 auto;min-width:0}
 .uv-titel .t{display:block;font-weight:700;font-size:1.02rem;line-height:1.3}
-.uv-titel .f{display:block;font-size:.78rem;color:var(--ink-soft);margin-top:2px}
+.uv-titel .f{display:block;font-size:.78rem;color:var(--ink-soft);margin-top:3px}
+.uv-titel .f::before{content:"";display:inline-block;width:9px;height:9px;border-radius:3px;
+  background:var(--feld);margin-right:7px;vertical-align:0}
 .uv-chev{flex:0 0 auto;width:22px;height:22px;color:var(--ink-soft);transition:transform .22s cubic-bezier(.16,1,.3,1)}
 .uv[data-open="true"] .uv-chev{transform:rotate(180deg)}
 @media (prefers-reduced-motion:reduce){.uv-chev{transition:none}}
@@ -108,7 +112,12 @@ header.top{border-bottom:1px solid var(--line);background:var(--card)}
 @media (prefers-reduced-motion:reduce){.uv-body{transition:none}}
 .uv-body-inner{overflow:hidden}
 .uv-content{padding:2px 18px 20px 78px;display:flex;flex-direction:column;gap:18px}
-@media(max-width:640px){.uv-content{padding-left:18px}}
+@media(max-width:640px){
+  .uv-content{padding-left:18px}
+  /* Lange Titel brechen mehrzeilig um - die Kachel gehoert dann an die erste Zeile */
+  .uv-head{align-items:flex-start}
+  .uv-chev{margin-top:11px}
+}
 .uv-content h4{font-size:.8rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft);margin-bottom:8px}
 .uv-content p.frage{font-size:.95rem;font-style:italic;color:var(--ink-soft)}
 .chips{display:flex;flex-wrap:wrap;gap:7px}
@@ -119,20 +128,40 @@ header.top{border-bottom:1px solid var(--line);background:var(--card)}
 details.original{border-top:1px dashed var(--line);padding-top:12px}
 details.original summary{cursor:pointer;font-size:.86rem;font-weight:700;color:var(--blue);list-style:none;display:flex;align-items:center;gap:7px}
 details.original summary::-webkit-details-marker{display:none}
-details.original summary::after{content:"+";font-weight:800;font-size:1rem}
-details.original[open] summary::after{content:"-"}
+details.original summary::after{content:"";width:8px;height:8px;margin:-4px 0 0 1px;
+  border-right:2px solid currentColor;border-bottom:2px solid currentColor;
+  transform:rotate(45deg);transition:transform .22s cubic-bezier(.16,1,.3,1)}
+details.original[open] summary::after{transform:rotate(-135deg);margin-top:2px}
+details.original summary:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:6px}
+@media (prefers-reduced-motion:reduce){details.original summary::after{transition:none}}
 details.original .orig-inner{margin-top:12px;font-size:.86rem;color:var(--ink-soft)}
 details.original .orig-inner h5{font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;color:var(--ink);margin-bottom:5px}
 details.original .orig-inner ul{padding-left:18px}
 details.original .orig-inner li{margin-bottom:5px}
 
 .pfad{display:flex;gap:6px;margin:6px 0 34px;height:8px;max-width:560px}
-.pfad i{flex:1;border-radius:4px;background:var(--line)}
+.pfad i{flex:1;border-radius:4px;background:var(--line);transition:background .2s}
 .pfad i.on{background:var(--tile)}
 
 footer{border-top:1px solid var(--line);background:var(--card);padding:28px 0 40px;margin-top:20px}
 footer .cols{display:flex;flex-wrap:wrap;gap:12px 40px;justify-content:space-between;font-size:.85rem;color:var(--ink-soft)}
 footer strong{color:var(--ink)}
+
+/* ---------- Lesbarkeit und Druck ---------- */
+.lernen li,.uv-content p.frage,details.original .orig-inner{max-width:72ch}
+::selection{background:var(--blue-soft,#e6edf7)}
+@media print{
+  header.top,.legend,.stufen-block,.pfad,.uv-chev,details.original{display:none}
+  body{background:#fff}
+  .hero{padding:0 0 12px}
+  .intro-film{max-width:340px;margin:0}
+  .wrap{max-width:none;padding:0}
+  .uv-body{grid-template-rows:1fr}
+  .uv-body-inner{overflow:visible}
+  .uv{break-inside:avoid;page-break-inside:avoid;box-shadow:none}
+  .uv-num,.chips span,.lernen li::before,.uv-titel .f::before,.kurs-toggle button[aria-pressed="true"]{
+    -webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
 </style>
 </head>
 <body>
@@ -151,20 +180,20 @@ footer strong{color:var(--ink)}
   <div class="wrap">
     <section class="hero">
       <h1 class="sr-only">Schulinternes Curriculum Physik · Paul-Klee-Gymnasium Overath</h1>
-      <video id="introFilm" class="intro-film" autoplay muted playsinline preload="auto"
-             poster="pkg-intro-physik-ende.jpg" width="1280" height="548"
-             aria-label="Animation: Schulinternes Curriculum Physik, Paul-Klee-Gymnasium Overath">
+      <video id="introFilm" class="intro-film" aria-hidden="true" autoplay muted playsinline preload="auto"
+             poster="pkg-intro-physik-ende.jpg" width="1280" height="548">
         <source src="pkg-intro-physik.mp4" type="video/mp4">
       </video>
       <div class="legend" id="legend" aria-label="Farblegende der Themenbereiche"></div>
     </section>
 
-    <section class="stufen-block" aria-label="Stufe wählen">
-      <h2>Stufe wählen</h2>
+    <section class="stufen-block" aria-labelledby="stufen-h">
+      <h2 id="stufen-h">Stufe wählen</h2>
       <div class="stufen" id="stufen"></div>
     </section>
 
-    <section class="view" id="view" aria-live="polite"></section>
+    <p class="sr-only" id="status" role="status"></p>
+    <section class="view" id="view"></section>
   </div>
 </main>
 
@@ -176,1141 +205,7 @@ footer strong{color:var(--ink)}
   </div>
 </footer>
 
-<script id="physik-daten" type="application/json">{
- "bereiche": {
-  "1": "Mechanik",
-  "2": "Optik, Wellen & Schall",
-  "3": "Elektrizität & Magnetismus",
-  "4": "Wärme & Energie",
-  "5": "Atom-, Kern- & Quantenphysik"
- },
- "stufen": {
-  "6": {
-   "uvs": [
-    {
-     "titel": "Leben bei verschiedenen Temperaturen",
-     "chips": [
-      "Temperatur und Wärme",
-      "Temperatur messen",
-      "Die Temperatur",
-      "Die Temperaturmessung",
-      "Messwerte im Diagramm darstellen",
-      "Durchschnittstemperatur berechnen",
-      "Wärmeausdehnung",
-      "Ausdehnung bei Erwärmung",
-      "Fest, flüssig und gasförmig",
-      "Die Aggregatzustände",
-      "Das Teilchenmodell",
-      "Die Anomalie des Wassers",
-      "Thermische Energie unterwegs",
-      "Thermische Energie wird transportiert"
-     ],
-     "lernen": [
-      "lernen die physikalische Größe Temperatur sowie die Messung der Temperatur mithilfe von Thermometern kennen (S. 40-41),",
-      "erheben Daten, fassen sie in Tabellen zusammen und erstellen geeignete Diagramme (S. 42-43),",
-      "erarbeiten die Volumenausdehnung bei Erwärmung als Wirkung von Wärme anhand von Experimenten und Beispielen aus Alltag und Technik (S. 44-48),",
-      "lernen die Aggregatzustände und ihre Veränderung als Wirkung der Wärme kennen (S. 49-51),",
-      "interpretieren die Wärmeausdehnung sowie die Aggregatzustände und Zustandsänderungen von Stoffen mithilfe des Teilchenmodells (S. 52-55),",
-      "diskutieren die Bedeutung der Anomalie des Wassers für Vorgänge des Alltags und der Natur (S. 56),",
-      "untersuchen experimentell die Prozesse des Transports thermischer Energie durch Wärmestrahlung, -mitführung und -leitung (S. 57-61),",
-      "unterscheiden mithilfe von Phänomenen des Alltags, der Technik und der Natur die unterschiedlichen Formen des Wärmetransports (S. 62-67),",
-      "wenden Erkenntnisse über den Wärmetransport auf Verfahren der Wärmedämmung an (S. 68-69)."
-     ],
-     "original": [
-      "unterscheiden und verwenden die Begriffe Temperatur und Wärme sachgerecht,",
-      "beschreiben die Veränderung der thermischen Energie unterschiedlicher Körper sowie den Temperaturausgleich zwischen Körpern durch die Zufuhr oder Abgabe von Wärme an alltäglichen Beispielen,",
-      "erläutern die Celsiusskala und ihre Bedeutung für die Temperaturmessung,",
-      "messen Temperaturen mit analogen und digitalen Instrumenten,",
-      "übertragen erhobene Messdaten zu Temperaturentwicklungen nach Anleitung in Tabellen und Diagramme. Sie können Daten aus Diagrammen entnehmen.",
-      "beschreiben an Beispielen aus Alltag und Technik Auswirkungen der Wärmeausdehnung von Körpern und Stoffen,",
-      "erklären Aggregatzustände, Übergänge zwischen ihnen sowie die Wärmeausdehnung von Stoffen mit einem einfachen Teilchenmodell,",
-      "beschreiben die Auswirkungen der Anomalie des Wassers und deren Bedeutung für natürliche Vorgänge,",
-      "ziehen aus Beobachtungen und Versuchen zu Wärmephänomenen einfache Schlussfolgerungen und stellen diese nachvollziehbar dar,",
-      "erklären Verfahren der Wärmedämmung anhand der jeweils relevanten Formen des Wärmetransports (Mitführung, Leitung, Strahlung),",
-      "begründen reflektiert und verantwortungsvoll Schutzmaßnahmen gegen Gefahren durch Verbrennung und Unterkühlung.",
-      "1.2 Digitale Werkzeuge: Temperatur messen (S. 39)",
-      "2.1 Informationsrecherche: Durchschnittstemperatur, Die Aggregatzustände, Treibhauseffekt. Wärmedämmung (S. 43, 50, 66, 69)",
-      "3.3 Kommunikation und Kooperation in der Gesellschaft: Wärmeleitung (S. 67)",
-      "4.1 Fest, flüssig, gasförmig (S. 49)"
-     ],
-     "zeit": null,
-     "bereich": 4
-    },
-    {
-     "titel": "Elektrischer Strom und Magnetismus",
-     "chips": [
-      "Elektrizität im Alltag",
-      "Elektrische Stromkreise",
-      "Schaltsymbole und Schaltpläne",
-      "Schaltungen mit mehreren Geräten oder Schaltern",
-      "Schaltungen mit zwei Schaltern",
-      "Wie können mehrere Geräte betrieben werden?",
-      "Nutzen und Gefahren des elektrischen Stroms",
-      "Gute Leiter, schlechte Leiter und Isolatoren",
-      "Elektrische Quellen",
-      "Das Teilchenmodell wird erweitert - Elektronen",
-      "Wirkungen des elektrischen Stroms",
-      "Ein Modell für den elektrischen Strom",
-      "Herstellung von Magneten",
-      "Das Magnetfeld",
-      "Die Erde als Magnet",
-      "Elektromagnete"
-     ],
-     "lernen": [
-      "lernen die Grundlagen eines elektrischen Stromkreises und seine Verwendung in Alltag und Technik kennen (S.79-82),",
-      "stellen elektrische Schaltungen mithilfe von Schaltsymbolen und Schaltplänen dar und bauen einfache elektrische Schaltungen sowie UND- und ODER-Schaltungen auf (S. 83-87),",
-      "ermitteln und unterscheiden die Wirkungen des elektrischen Stroms (S. 88-89, 94),",
-      "untersuchen in Experimenten verschiedene Materialen auf ihre Leitungseigenschaften (S. 90-91),",
-      "interpretieren den elektrischen Stromfluss in einem geschlossenen Stromkreis mittels eines Modells frei beweglicher Elektronen",
-      "diskutieren Nutzen und Gefahren sowie Schutzeinrichtungen (Isolatoren, Sicherungen) (S. 96-100),",
-      "erarbeiten experimentell die Eigenschaften von Magneten (S. 105- 107),",
-      "wenden Erkenntnisse über Magneten auf die Nutzung als Kompass zur Orientierung an (S. 108),",
-      "lernen über das Modell der Elementarmagneten die Magnetisierung und Entmagnetisierung eisenhaltiger Gegenstände kennen",
-      "untersuchen die Richtung und Stärke magnetischer Kräfte im Raum mittels des Modells der Feldlinien (S. 110-111),",
-      "verknüpfen Erkenntnisse über elektrische Ströme und Magneten zum Elektromagneten (S. 112-114)."
-     ],
-     "original": [
-      "erläutern den Aufbau einfacher elektrischer Stromkreise und begründen die Verwendung von Reihen- und Parallelschaltungen,",
-      "planen und bauen zweckgerichtet elektrische Schaltungen auf,",
-      "stellen Stromkreise durch Schaltsymbole und Schaltpläne dar,",
-      "ermitteln in eigenständig geplanten Versuchen die Leitungseigenschaften verschiedener Stoffe und ziehen daraus Schlüsse zu ihrer Verwendbarkeit auch unter Sicherheitsaspekten,",
-      "beschreiben fachsprachlich angemessen Stromwirkungen und geben Beispiele für ihre Nutzung in elektrischen Geräten an,",
-      "erklären in Grundzügen die Funktionsweise von elektrischen Sicherungseinrichtungen,",
-      "entscheiden auf einem grundlegenden Niveau über die gefahrlose Nutzbarkeit von elektrischen Geräten,",
-      "nennen Möglichkeiten zur sparsamen Nutzung elektrischer Energie im Haushalt und bewerten diese unter verschiedenen Kriterien,",
-      "nenne und bewerten Risiken und Sicherheitsmaßnahmen beim Experimentieren mit elektrischen Geräten",
-      "benennen ferromagnetische Elemente,",
-      "erklären Kräfte zwischen Magneten sowie zwischen ihnen und magnetisierbaren Stoffen mit der Fernwirkung über magnetische Felder,",
-      "beschreiben in Grundzügen Eigenschaften des Magnetfeldes der Erde und erklären die Funktionsweise eines Kompasses,",
-      "erkunden durch systematisches Probieren einfache magnetische Phänomene,",
-      "erklären die Magnetisierung bzw. Entmagnetisierung von Stoffen und die Untrennbarkeit der Pole mit dem Modell der Elementarmagnete,",
-      "untersuchen die Struktur von Magnetfeldern mit geeigneten Hilfsmitteln und machen sie sichtbar,",
-      "1.1 Medienausstattung: Der Kurzschluss, Isolatoren, Schutzleiter (S. 96, 98, 99-100)",
-      "2.1 Informationsrecherche: Die Erde als Magnet (S. 111)"
-     ],
-     "zeit": null,
-     "bereich": 3
-    },
-    {
-     "titel": "Schall und Hören",
-     "chips": [
-      "Schall und Lärm",
-      "Töne sind Schwingungen",
-      "Wie Töne entstehen",
-      "Lautstärke und Tonhöhe",
-      "Schall unterwegs",
-      "Schallwellen",
-      "Schall unterwegs in unterschiedlichen Stoffen",
-      "Tiere hören anders – Ultraschall und Infraschall"
-     ],
-     "lernen": [
-      "identifizieren Schallquellen und interpretieren Schall als Vibration eines Gegenstandes (S. 121-122),",
-      "untersuchen die Veränderungen des Schalls durch Änderung von Lautstärke und Tonhöhe (S. 123-126),",
-      "erarbeiten die Ausbreitung von Schall als Welle und in Hinblick auf Schallgeschwindigkeiten in unterschiedlichen Medien (S. 127-130),",
-      "unterscheiden Absorption und Reflexion von Schall anhand von Beispielen (S. 128-129),",
-      "lernen mithilfe von Beispielen aus der Natur und Technik die Eigenschaften von hörbarem Schall, Ultra- und Infraschall kennen und zu unterscheiden (S. 131),",
-      "messen Lautstärken und bestimmen Hörbereiche mit Apps und Tongeneratoren (S. 132-133),",
-      "beurteilen Schall nach seiner Lautstärke (dB(A)) und ordnen ihn entsprechenden Skalenwerten zu (S. 134),",
-      "wenden Erkenntnisse über Lärm und seine Auswirkungen auf die menschliche Gesundheit auf Methoden des Lärmschutzes an und entwickeln Idee zur Lärmreduzierung (S. 135)."
-     ],
-     "original": [
-      "beschreiben die Entstehung und Wahrnehmung von Schall durch Schwingungen von Gegenständen mit den bestimmenden Grundgrößen Frequenz und Lautstärke,",
-      "zeigen und erläutern an ausgewählten Musikinstrumenten Möglichkeiten der Veränderung von Tonhöhe und Lautstärke,",
-      "erklären die Ausbreitung von Schall in verschiedenen Medien mithilfe eines Teilchenmodells,",
-      "erläutern Reflexion und Absorption von Schall anhand von Beispielen,",
-      "geben Eigenschaften von hörbarem Schall, Ultraschall und Infraschall an und nennen dazu Beispiele aus Natur, Medizin und Technik,",
-      "führen mittels in digitalen Alltagsgeräten verfügbarer Sensoren Schallpegelmessungen durch und interpretieren diese,",
-      "analysieren in Grundzügen Schallschwingungen und deren Darstellungen auf digitalen Geräten,",
-      "ordnen Lautstärken den Skalenwerten des Schalldruckpegels zu und erläutern Auswirkungen von Schall und Lärm auf die menschliche Gesundheit,",
-      "benennen und beurteilen Maßnahmen, die in verschiedenen Alltagssituationen zur Vermeidung von und zum Schutz vor Lärm ergriffen werden können,",
-      "bewerten Lärmbelästigungen und ziehen daraus begründete Konsequenzen.",
-      "1.2 Digitale Werkzeuge: Sichtbare Schwingungen, Tiere hören anders, Lärm (S. 126, 131, 132)",
-      "2.1 Informationsrecherche: Lautstärke und Tonhöhe, Tiere hören anders (S. 125, 131)",
-      "3.1 Kommunikations- und Kooperationsprozesse: Schallausbreitung (S. 137)",
-      "3.3 Kommunikation und Kooperation in der Gesellschaft: Schutz vor Lärm (S. 135)",
-      "4.1 Medienproduktion und Präsentation: Sichtbare Schwingungen (S. 126)"
-     ],
-     "zeit": null,
-     "bereich": 2
-    },
-    {
-     "titel": "Licht und Sehen",
-     "chips": [
-      "Die Ausbreitung des Lichts",
-      "Wie sich Licht ausbreitet",
-      "Licht wird gestreut, absorbiert oder durchgelassen",
-      "Licht wird reflektiert",
-      "Streulicht ist wichtig fürs Sehen",
-      "Vorstellungen vom Sehen",
-      "Infrarot und Ultraviolett",
-      "Schatten",
-      "Wie Schatten entstehen",
-      "Mehr als nur ein Schatten",
-      "Unscharfe Schatten",
-      "Löcher zeichnen Bilder"
-     ],
-     "lernen": [
-      "untersuchen die Ausbreitung von Licht und unterscheiden Lichtbündel von Lichtstrahlen (Lichtstrahlmodell) (S. 143-146),",
-      "beurteilen Vorstellungen vom Sehen aus der Geschichte der Naturwissenschaften und vergleichen diese mit Erkenntnissen über die Streuung und Absorption von Licht (S. 147, 150),",
-      "erarbeiten experimentell das Reflexionsgesetz (S. 148),",
-      "unterscheiden Lichtquellen und Streulicht in der Technik und im Alltag und diskutieren diese im Hinblick auf Schutz und Sicherheit im Straßenverkehr (S. 149, 151),",
-      "beschreiben den Prozess der Energieumwandlung anhand unterschiedlicher Lampentypen (S. 152),",
-      "lernen die Wirkungen und Gefahren verschiedener Strahlungen und ihre Anwendungen im Alltag und in der Technik (S. 153),",
-      "führen Experimente zur Entstehung von Schatten aus (S. 154-156),",
-      "untersuchen den Einfluss der Lichtquelle auf Schattenraum und Schattenbild und erstellen passende Skizzen (S. 157-158),",
-      "leiten die Funktionsweise einer Lochkamera mithilfe eines selbstgebauten Modells her und testen Möglichkeiten zur Veränderung des Lochkamerabilds (S. 159-164)."
-     ],
-     "original": [
-      "erklären die Ausbreitung des Lichts mit dem Strahlenmodell und erläutern den Modellcharakter des Begriffs Lichtstrahl,",
-      "erklären die Sichtbarkeit und die Erscheinung von Gegenständen mit der Streuung, der gerichteten Reflexion und der Absorption von Licht an ihren Oberflächen,",
-      "vergleichen kritisch Vorstellungen zum Sehen und erklären das Sehen mit dem Strahlenmodell des Lichts und dem Sender-Empfänger-Modell,",
-      "unterscheiden Infrarotstrahlung, sichtbares Licht und Ultraviolettstrahlung und beschreiben an Beispielen ihre Wirkungen,",
-      "wählen geeignete Schutzmaßnahmen gegen die Gefährdungen durch helles Licht, Infrarotstrahlung und UV-Strahlung aus,",
-      "erläutern die Entstehung von Abbildungen bei einer Lochkamera und Möglichkeiten zu deren Veränderung,",
-      "konstruieren zeichnerisch Abbildungen an einer Lochkamera sowie Schattenphänomene,",
-      "beschreiben an Beispielen aus Technik und Alltag die Umwandlung von Lichtenergie in andere Energieformen,",
-      "begründen mithilfe optischer Phänomene die Schutz- bzw. Signalwirkung von Alltagsgegenständen.",
-      "2.1 Informationsrecherche: Camera obscura (S. 163)",
-      "2.2 Informationsauswertung: Lebendige Lichtquellen, Camera obscura (S. 149, 163)",
-      "5.1 Medienanalyse: Eine Lochkamera bauen (S. 160)"
-     ],
-     "zeit": null,
-     "bereich": 2
-    }
-   ]
-  },
-  "8": {
-   "uvs": [
-    {
-     "titel": "Optische Instrumente",
-     "chips": [
-      "Bilder erzeugen mit Löchern und Sammellinsen",
-      "Löcher erzeugen Bilder",
-      "Löcher zeichnen Bilder",
-      "Sammellinsen zeichnen scharfe Bilder",
-      "Sammellinsen führen Licht zusammen",
-      "Bilder der Sammellinse",
-      "Scharfe und unscharfe Bilder bei der Sammellinse",
-      "Große Bilder – kleine Bilder",
-      "Größe und Lage des Bildes",
-      "Verschiedene Sammellinsen – verschieden große Bilder",
-      "Wahrnehmung – was wir in Netzhautbildern erkennen",
-      "Sehen und Erkennen – Auge und Gehirn",
-      "Reflexion und Brechung des Lichts",
-      "Spiegelbilder und Reflexion"
-     ],
-     "lernen": [
-      "die Eigenschaften u nd die Entstehung des Spiegelbildes mithilfe des Reflexionsgesetzes und der geradlinigen Ausbreitung des Lichts erklären. (S. 31–33)",
-      "die Abhängigkeit der Brechung bzw. Totalreflexion des Lichts von den Parametern Einfallswinkel und optische Dichte qualitativ erläutern. (S. 34–37)",
-      "die Funktion von Linsen für die Bilderzeugung im Auge und für den Aufbau einfacher optischer Systeme beschreiben. (S. 15–25; S. 38; S. 44–51)",
-      "die Funktionsweise von Endoskop und Glasfaserkabel mithilfe der Totalreflexion erklären. (S. 40)",
-      "die Entstehung eines Spektrums durch die Farbzerlegung von Licht am Prisma darstellen und infrarotes, sichtbares und ultraviolettes Licht einem Spektralbereich zuordnen. (S. 52–58)"
-     ],
-     "original": [
-      "anhand einfacher Handexperimente die charakteristischen Eigenschaften verschiedener Linsentypen bestimmen. (S. 15; S; 19)",
-      "für Versuche zu optischen Abbildungen geeignete Linsen auswählen und diese sachgerecht anordnen und kombinieren. (S. 15; S. 19; S. 21; S. 24; S. 45)",
-      "unter Verwendung eines Lichtstrahlmodells die Bildentstehung bei Sammellinsen sowie den Einfluss der Veränderung von Parametern mittels digitaler Werkzeuge erläutern (Geometrie -Software,)",
-      "digitale Farbmodelle (RGB, CMYK) mithilfe der Farbmischung von Licht erläutern und diese zur Erzeugung von digitalen Produkten verwenden. (S. 56 –60)",
-      "Gefahren beim Experimentieren mit intensiven Lichtquellen (Sonnenlicht, Laserstrahlung) einschätzen und Schutzmaßnahmen vornehmen. (S. 75; S. 94)",
-      "optische Geräte hinsichtlich ihres Nutzens für sich selbst, für die Forschung und für die Gesellschaft beurteilen. (S. 48; S. 51; S. 76)"
-     ],
-     "zeit": null,
-     "bereich": 2
-    },
-    {
-     "titel": "Kleines groß sehen – Fernes nah sehen",
-     "chips": [
-      "Lupe und Mikroskop",
-      "Die Sammellinse als Lupe",
-      "Das Mikroskop",
-      "Fernrohr",
-      "Das astronomische Fernrohr",
-      "Die Welt der Farben",
-      "Weißes Licht steckt voller Farben",
-      "Weißes Licht wird zerlegt",
-      "Farbige Lichter und farbige Dinge",
-      "Monitorfarben sind RGB-Farben",
-      "CMYK-Farben",
-      "Sterne und Weltall",
-      "Unser Sonnensystem",
-      "Sonne, Mond und Erde"
-     ],
-     "lernen": [
-      "Aufbau des Sonnensystems sowie wesentliche Eigenschaften der Himmelsobjekte Sterne, Planeten, Monde und Kometen, erläutern. (S. 75–79; S. 83–89)",
-      "den Wechsel der Jahreszeiten als Folge der Neigung der Erdachse erklären. (S. 73)",
-      "mit dem Maß Lichtjahr Entfernungen im Weltall angeben und vergleichen. (S. 78; S. 86)",
-      "typische Stadien der Sternentwicklung in Grundzügen darstellen",
-      "(S. 88; S. 291)",
-      "mithilfe von Beispielen Auswirkungen der Gravitation sowie das Phänomen der Schwerelosigkeit erläutern. (S. 135–138; S. 166–168)"
-     ],
-     "original": [
-      "den Ablauf und die Entstehung von Mondphasen sowie von Sonnen- und Mondfinsternissen modellhaft erklären. (S. 69–72)",
-      "die Bedeutung der Erfindung des Fernrohrs für die Entwicklung des Weltbildes und der Astronomie erläutern. (S. 76–779)",
-      "an anschaulichen Beispielen qualitativ demonstrieren, wie Informationen über das Universum gewonnen werden können (Parallaxen, Spektren). (S.74; S. 86–87)",
-      "wissenschaftliche und andere Vorstellungen über die Welt und ihre Entstehung kritisch vergleichen und begründet bewerten. (S. 72; S. 76–77; S. 89; S.92)",
-      "auf der Grundlage von Informationen zu aktuellen Projekten der Raumfahrt die wissenschaftliche und gesellschaftliche Bedeutung dieser Projekte nach ausgewählten Kriterien beurteilen. (S. 74)"
-     ],
-     "zeit": null,
-     "bereich": 2
-    },
-    {
-     "titel": "Bewegung, Kraft und Energie",
-     "chips": [
-      "Bewegungen beschreiben – Physik im Alltag",
-      "Geschwindigkeit",
-      "Die Geschwindigkeit eine physikalische Größe",
-      "Momentan- und Durchschnittsgeschwindigkeit",
-      "Bewegungen untersuchen",
-      "Bewegungen unterscheiden",
-      "Bewegungen aufzeichnen",
-      "Spezielle Bewegungsarten",
-      "Geschwindigkeiten ändern sich – Beschleunigung",
-      "Kräfte",
-      "Überall Kräfte",
-      "Woran man Kräfte erkennt",
-      "Wechselwirkungskräfte",
-      "Körper im Kräftegleichgewicht"
-     ],
-     "lernen": [
-      "verschiedene Arten von Bewegungen mithilfe der Begriffe Geschwindigkeit und Beschleunigung analysieren und beschreiben. (S. 104; S. 111; S. 115–116)",
-      "mittlere und momentane Geschwindigkeiten unterscheiden und Geschwindigkeiten bei gleichförmigen Bewegungen berechnen. (S. 104–105; S. 108)",
-      "Kräfte als vektorielle Größen beschreiben und einfache Kräfteadditionen grafisch durchführen. (S.124; S. 131; S. 133-134)",
-      "die Konzepte Kraft und Gegenkraft sowie Kräfte im Gleichgewicht unterscheiden und an Beispielen erläutern. (S. 125–127)",
-      "die Goldene Regel anhand der Kraftwandlung an einfachen Maschinen erläutern. (S. 153–156)",
-      "Spannenergie, Bewegungsenergie und Lageenergie sowie andere Energieformen bei physikalischen Vorgängen identifizieren. (S. 143–145)",
-      "Energieumwandlungsketten aufstellen und daran das Prinzip der Energieerhaltung erläutern. (S. 145–146)",
-      "mithilfe der Definitionsgleichung für Lageenergie einfache Energieumwandlungsvorgänge berechnen. (S: 148–150)",
-      "den Zusammenhang zwischen Energie und Leistung erläutern und formal beschreiben. (S. 158)"
-     ],
-     "original": [
-      "Kurvenverläufe in Orts-Zeit-Diagrammen interpretieren. (S. 112–116)",
-      "Messdaten zu Bewegungen oder Kraftwirkungen in einer Tabellenkalkulation mit einer angemessenen Stellenzahl aufzeichnen, mithilfe von Formeln und Berechnungen auswerten sowie gewonnene Daten in sinnvollen, digital erstellten Diagrammformen darstellen. (S. 129-130)",
-      "Kräfte identifizieren, die zu einer Änderung des Bewegungszustands oder einer Verformung von Körpern führen. (S. 123–125)",
-      "Massen und Kräfte messen sowie Gewichtskräfte berechnen. (S. 129; S. 135–136; S. 138)",
-      "die Goldene Regel der Mechanik mit dem Energieerhaltungssatz begründen. (S. 146; S. 154; S. 156)",
-      "Einsatzmöglichkeiten und den Nutzen von einfachen Maschinen und Werkzeugen zur Bewältigung von praktischen Problemen aus einer physikalischen Sichtweise bewerten. (S. 153–156)",
-      "Zugänge zu Gebäuden unter dem Gesichtspunkt Barrierefreiheit beurteilen. (S. 153; S. 163)",
-      "Nahrungsmittel auf Grundlage ihres Energiegehalts bedarfsangemessen bewerten. (S. 151; S. 160)",
-      "an Beispielen Leistungen berechnen und Leistungswerte mit Werten der eigenen Körperleistung vergleichen. (S. 157–161)"
-     ],
-     "zeit": null,
-     "bereich": 1
-    }
-   ]
-  },
-  "9": {
-   "uvs": [
-    {
-     "titel": "Druck und Auftrieb",
-     "chips": [
-      "Schweben, Steigen, Sinken",
-      "Schwere und leichte Stoffe – die Dichte",
-      "Schweben, Steigen und Sinken",
-      "Druck in Gasen und Flüssigkeiten",
-      "Vorstellungen vom Druck",
-      "Druck und Kraft",
-      "Das hydrostatische Paradoxon",
-      "Berechnung des Schweredrucks",
-      "Druckunterschiede sorgen für Ströme",
-      "Kräfte beim Tauchen und Schwimmen",
-      "Der Auftrieb",
-      "Schwimmen"
-     ],
-     "lernen": [
-      "bei Flüssigkeiten und Gasen die Größen Druck und Dichte mithilfe des Teilchenmodells erläutern. (S. 174–175; S. 179)",
-      "die Formelgleichungen für Druck und Dichte physikalisch erläutern und daraus Verfahren zur Messung dieser Größen ableiten. (S. 174–175; S. 180–181)",
-      "den Druck bei unterschiedlichen Flächeneinheiten in der Einheit Pascal angeben. (S. 180)",
-      "Auftriebskräfte unter Verwendung des Archimedischen Prinzips berechnen. (S. 187–188)"
-     ],
-     "original": [
-      "den Schweredruck in einer Flüssigkeit in Abhängigkeit von der Tiefe bestimmen. (S. 181)",
-      "die Entstehung der Auftriebskraft auf Körper in Flüssigkeiten mithilfe des Schweredrucks erklären und in einem mathematischen Modell beschreiben. (S. 187–188)",
-      "die Nichtlinearität des Luftdrucks in Abhängigkeit von der Höhe mithilfe des Teilchenmodells qualitativ erklären.",
-      "anhand physikalischer Faktoren begründen, ob ein Körper in einer Flüssigkeit oder einem Gas steigt, sinkt oder schwebt. (S. 175; S. 177; S. 188)",
-      "Angaben und Messdaten von Druckwerten in verschiedenen Alltagssituationen auch unter dem Aspekt der Sicherheit sachgerecht interpretieren und bewerten."
-     ],
-     "zeit": null,
-     "bereich": 1
-    },
-    {
-     "titel": "Elektrizität",
-     "chips": [
-      "Wenn es knistert und funkt",
-      "Materie und Ladung",
-      "Elektrisch geladen",
-      "Atommodell und Ladung",
-      "Elektrisches Feld und Feldlinien",
-      "Elektroskop – ein Messgerät für Ladung",
-      "Ladungstrennung und Spannung",
-      "Ladung unterwegs",
-      "Ladungsausgleich",
-      "Elektrischer Strom und elektrische Leiter",
-      "Watt, Volt & Co.",
-      "Energieübertragung mit Elektrizität",
-      "Energiestrom und Energiemenge",
-      "Stromkreise und elektrische Stromstärke"
-     ],
-     "lernen": [
-      "die Funktionsweise eines Elektroskops erläutern. (S. 205)",
-      "die Entstehung einer elektrischen Spannung durch den erforderlichen Energieaufwand bei der Ladungstrennung qualitativ erläutern. (S. 206)",
-      "zwischen der Definition des elektrischen Widerstands und dem ohmschen Gesetz unterscheiden. (S. 234–238)",
-      "die Beziehung von Spannung, Stromstärke und Widerstand in Reihen- und Parallelschaltungen mathematisch beschreiben und an konkreten Beispielen plausibel machen. (S. 241–242)",
-      "Wirkungen von Elektrizität auf den menschlichen Körper in Abhängigkeit von der Stromstärke und Spannung erläutern. (S. 246)",
-      "den prinzipiellen Aufbau einer elektrischen Hausinstallation einschließlich der Sicherheitsvorrichtungen darstellen. (S. 243–245)",
-      "die Definitionsgleichungen für elektrische Energie und elektrische Leistung erläutern und auf ihrer Grundlage Berechnungen durchführen. (S. 213–214; S. 225; S. 228)",
-      "Energiebedarf und Leistung von elektrischen Haushaltsgeräten ermitteln und die entsprechenden Energiekosten berechnen. (S. 214)"
-     ],
-     "original": [
-      "Wechselwirkungen zwischen geladenen Körpern durch elektrische Felder beschreiben. (S. 202–204)",
-      "elektrische Aufladung und Leitungseigenschaften von Stoffen mithilfe eines einfachen Elektronen-Atomrumpf-Modells erklären. (S. 203)",
-      "elektrische Schaltungen sachgerecht entwerfen, in Schaltplänen darstellen und anhand von Schaltplänen aufbauen. (S. 217; S. 221; S. 223–224; S. 227; S. 231–233)",
-      "Spannungen und Stromst ärken messen und elektrische Widerstände ermitteln. (S. 216–221; S. 223–227; S. 231–234)",
-      "die mathematische Modellierung von Messdaten in Form einer Gleichung unter Angabe von abhängigen und unabhängigen Variablen erläutern und dabei auftretende Konstanten interpretieren. (S. 236-237)",
-      "Versuche zu Einflussgrößen auf den elektrischen Widerstand unter Berücksichtigung des Prinzips der Variablenkontrolle planen und durchführen.",
-      "(S. 232)",
-      "Gefahren und Sicherheitsmaßnahmen beim Umgang mit elektrischem Strom und elektrischen Geräten beurteilen. (S. 243–246)",
-      "Kaufentscheidungen für elektrische Geräte unter Abwägung physikalischer und außerphysikalischer Kriterien treffen. (S. 215)"
-     ],
-     "zeit": null,
-     "bereich": 3
-    }
-   ]
-  },
-  "10": {
-   "uvs": [
-    {
-     "titel": "Gefahren und Nutzen ionisierender Strahlung",
-     "frage": "Ist ionisierende Strahlung gefährlich oder nützlich?",
-     "chips": [
-      "Alpha-, Beta-, Gamma",
-      "Halbwertszeit",
-      "Röntgenstrahlung",
-      "Wechselwirkung von Strahlung mit Materie:",
-      "Nachweismethoden",
-      "Absorption",
-      "Schutzmaßnahmen"
-     ],
-     "lernen": [],
-     "original": [
-      "UF4: Übertragung und Vernetzung",
-      "E1: Problem und Fragestellung",
-      "E7: Naturwissenschaftliches Denken und Arbeiten",
-      "K2: Informationsverarbeitung"
-     ],
-     "zeit": "ca. 12 Ustd.",
-     "inhaltsfeld": "Ionisierende Strahlung",
-     "bereich": 5
-    },
-    {
-     "titel": "Energie aus Atomkernen",
-     "frage": "Ist die Kernenergie beherrschbar?",
-     "chips": [
-      "Kernspaltung",
-      "Kernfusion",
-      "Kernkraftwerke",
-      "Endlagerung und Problematik"
-     ],
-     "lernen": [],
-     "original": [
-      "K2: Informationsverarbeitung",
-      "K4: Argumentation",
-      "B1: Fakten- und Situationsanalyse",
-      "B3: Abwägung und Entscheidung"
-     ],
-     "zeit": "ca. 10 Ustd.",
-     "inhaltsfeld": "Ionisierende Strahlung",
-     "bereich": 5
-    },
-    {
-     "titel": "Versorgung mit elektrischer Energie",
-     "frage": "Wie erfolgt die Übertragung der elektrischen Energie vom Kraftwerk bis zum Haushalt?",
-     "chips": [
-      "Elektromotor",
-      "Generator",
-      "Wechselspannung",
-      "Transformator",
-      "Energieübertragung",
-      "Energieentwertung",
-      "Wirkungsgrad"
-     ],
-     "lernen": [],
-     "original": [
-      "E4: Untersuchung und Experiment",
-      "B2: Bewertungskriterien und Handlungsoptionen"
-     ],
-     "zeit": "ca. 8 Ustd.",
-     "inhaltsfeld": "Energieversorgung",
-     "bereich": 3
-    },
-    {
-     "titel": "Energieversorgung der Zukunft",
-     "frage": "Wie können regenerative Energien zur Sicherung der Energieversorgung beitragen?",
-     "chips": [
-      "Kraftwerke",
-      "Regenerative Energieanlagen",
-      "Energieübertragung",
-      "Energieentwertung",
-      "Wirkungsgrad"
-     ],
-     "lernen": [],
-     "original": [
-      "UF4: Übertragung und Vernetzung … zur Schwerpunktsetzung Verantwortlicher Umgang mit Energie, Nachhaltigkeitsgedanke",
-      "K2: Informationsverarbeitung",
-      "B3: Abwägung und Entscheidung",
-      "B4: Stellungnahme und Reflexion"
-     ],
-     "zeit": "ca. 5 Ustd.",
-     "inhaltsfeld": "Energieversorgung",
-     "bereich": 3
-    }
-   ]
-  },
-  "EF": {
-   "uvs": [
-    {
-     "titel": "Kinematik (Bewegungslehre)",
-     "frage": "",
-     "chips": [
-      "Physik in Sport und Verkehr",
-      "Wie lassen sich Bewegungen vermessen?",
-      "Wie funktioniert eine Lichtschranke?",
-      "Wie lange bin ich beim freien Fall in der Luft?",
-      "Wie modelliere ich eine zu meinen Messdaten passende Formel?",
-      "Bei welchem Abwurfwinkel werfe ich am weitesten? ~ 30 Schulstunden"
-     ],
-     "lernen": [
-      "erläutern die Größen Ort, Strecke, Geschwindigkeit, Beschleunigung, Masse, Kraft, Energie, Leistung, Impuls und ihre Beziehungen zueinander an unterschiedlichen Beispielen (S1, K4)",
-      "unterscheiden gleichförmige und gleichmäßig beschleunigte Bewegungen und erklären zugrunde liegende Ursachen auch am waagerechten Wurf (S2, S3, S7)",
-      "stellen Bewegungs- und Gleichgewichtszustände durch Komponentenzerlegung bzw. Vektoraddition dar (S1, S7, K7)",
-      "planen selbstständig Experimente zur quantitativen und qualitativen Untersuchung einfacher Bewegungen (E5, S5)",
-      "interpretieren die Messdatenauswertung von Bewegungen unter qualitativer Berücksichtigung von Messunsicherheiten (E7, S6, K9)",
-      "ermitteln anhand von Messdaten und Diagrammen funktionale Beziehungen zwischen mechanischen Größen (E6, E4, S6, K6)",
-      "bestimmen Geschwindigkeiten und Beschleunigungen mithilfe mathematischer Verfahren und digitaler Werkzeuge (E4, S7)",
-      "beurteilen die Güte digitaler Messungen von Bewegungsvorgängen mithilfe geeigneter Kriterien (B4, B5, E7, K7)",
-      "erläutern die Bedeutung von Bezugsystemen bei der Beschreibung von Bewegungen (S2, S3, K4)"
-     ],
-     "original": [
-      "Der freie Fall",
-      "Bewegungsgleichungen",
-      "Ungestörte Überlagerung",
-      "Wurfbewegungen"
-     ],
-     "zeit": "ca. 30 Stunden",
-     "inhaltsfeld": "",
-     "bereich": 1
-    },
-    {
-     "titel": "Dynamik",
-     "frage": "",
-     "chips": [
-      "Physik in Sport und Verkehr",
-      "Wie weit / wie lange bewegen sich einmal angestoßene Körper im Weltall? Und auf der Erde?",
-      "Welche Kraft ist nötig, um einen Körper zu beschleunigen? ~ 12 Schulstunden"
-     ],
-     "lernen": [
-      "erläutern die Größen Ort, Strecke, Geschwindigkeit, Beschleunigung, Masse, Kraft, Energie, Leistung, Impuls und ihre Beziehungen zueinander an unterschiedlichen Beispielen (S1, K4)",
-      "analysieren in verschiedenen Kontexten Bewegungen qualitativ und quantitativ sowohl anhand wirkender Kräfte als auch aus energetischer Sicht (S1, S3, K7)",
-      "stellen Bewegungs- und Gleichgewichtszustände durch Komponentenzerlegung bzw. Vektoraddition dar (S1, S7, K7)",
-      "erklären mithilfe von Erhaltungssätzen sowie den Newton’schen Gesetzen Bewegungen (S1, E2, K4)",
-      "erläutern qualitativ die Auswirkungen von Reibungskräften bei realen Bewegungen (S1, S2, K4)",
-      "untersuchen Bewegungen mithilfe von Erhaltungssätzen sowie des Newton‘schen Kraftgesetzes (E4, K4)",
-      "begründen die Auswahl relevanter Größen bei der Analyse von Bewegungen (E3, E8, S5, K4)"
-     ],
-     "original": [
-      "Die Grundgleichung der Mechanik",
-      "Wechselwirkung und Impuls",
-      "Das Kräftegleichgewicht",
-      "Träge und schwere Masse",
-      "Kräfte an der schiefen Ebene",
-      "Haftkräfte und Reibungskräfte"
-     ],
-     "zeit": "ca. 12 Stunden",
-     "inhaltsfeld": "",
-     "bereich": 1
-    },
-    {
-     "titel": "Kreisbewegungen",
-     "frage": "",
-     "chips": [
-      "Zentripetale Kräfte",
-      "Trägheitskräfte"
-     ],
-     "lernen": [
-      "erläutern auch quantitativ die kinematischen Größen der gleichförmigen Kreisbewegung Radius, Drehwinkel, Umlaufzeit, Umlauffrequenz, Bahngeschwindigkeit, Winkelgeschwindigkeit und Zentripetalbeschleunigung sowie deren Beziehungen zueinander an Beispielen (S1, S7, K4)",
-      "Was sind Trägheitskräfte? ~ 12 Schulstunden der Beschreibungsgrößen dieser Bewegung (S1, K3)",
-      "erläutern die Bedeutung von Bezugsystemen bei der Beschreibung von Bewegungen (S2, S3, K4)",
-      "interpretieren Messergebnisse aus Experimenten zur quantitativen Untersuchung der Zentripetalkraft (E4, E6, S6, K9)"
-     ],
-     "original": [
-      "Zentripetale Kräfte",
-      "Trägheitskräfte"
-     ],
-     "zeit": "ca. 12 Stunden",
-     "inhaltsfeld": "",
-     "bereich": 1
-    },
-    {
-     "titel": "Erhaltungssätze: Energie und Impuls",
-     "frage": "",
-     "chips": [
-      "Was ist ein Perpetuum mobile? Kann es funktionieren?",
-      "Wie lässt sich meine Sprungkraft ermitteln?",
-      "Wie groß ist meine Leistung beim Treppensteigen?",
-      "Aus welcher Höhe muss der Achterbahnwagen Anlauf nehmen, um im Looping nicht abzustürzen?",
-      "Energie und Impuls beim Auto-Crash ~ 18 Schulstunden"
-     ],
-     "lernen": [
-      "erläutern die Größen Ort, Strecke, Geschwindigkeit, Beschleunigung, Masse, Kraft, Energie, Leistung, Impuls und ihre Beziehungen zueinander an unterschiedlichen Beispielen (S1, K4)",
-      "beschreiben eindimensionale Stoßvorgänge mit Impuls- und Energieübertragung (S1, S2, K3)",
-      "analysieren in verschiedenen Kontexten Bewegungen qualitativ und quantitativ sowohl anhand wirkender Kräfte als auch aus energetischer Sicht (S1, S3, K7)",
-      "erklären mithilfe von Erhaltungssätzen sowie den Newton’schen Gesetzen Bewegungen (S1, E2, K4)",
-      "untersuchen Bewegungen mithilfe von Erhaltungssätzen sowie des Newton‘schen Kraftgesetzes (E4, K4)",
-      "begründen die Auswahl relevanter Größen bei der Analyse von Bewegungen (E3, E8, S5, K4)",
-      "bewerten Ansätze aktueller und zukünftiger Mobilitätsentwicklung unter den Aspekten Sicherheit und mechanischer Energiebilanz (B6, K1, K5)",
-      "bewerten die Darstellung bekannter vorrangig mechanischer Phänomene in verschiedenen Medien bezüglich ihrer Relevanz und Richtigkeit (B1, B2, K2, K8)"
-     ],
-     "original": [
-      "Kinetische und potenzielle Energie",
-      "Energieübertragung und Reibung",
-      "Energieerhaltung",
-      "Energiestrom - Leistung",
-      "Impuls und Impulserhaltung",
-      "Impulserhaltung in der Ebene",
-      "Rückstoßprinzip"
-     ],
-     "zeit": "ca. 18 Stunden",
-     "inhaltsfeld": "",
-     "bereich": 1
-    },
-    {
-     "titel": "Gravitation und Bewegungen von Himmelskörpern",
-     "frage": "",
-     "chips": [
-      "Was ist über die Bewegung von Planeten bekannt?",
-      "Wie lässt sich die Masse der Sonne ermitteln?",
-      "Warum fällt der Mond nicht auf die Erde?",
-      "Jede Masse ist von einem Gravitationsfeld umgeben!",
-      "Wie kommen Ebbe und Flut zustande? ~ 12 Schulstunden"
-     ],
-     "lernen": [
-      "beschreiben quantitativ die bei einer gleichförmigen Kreisbewegung wirkende Zentripetalkraft in Abhängigkeit der Beschreibungsgrößen dieser Bewegung (S1, K3)",
-      "erläutern die Abhängigkeiten der Massenanziehungskraft zweier Körper anhand des Newtonschen Gravitationsgesetzes im Rahmen des Feldkonzepts (S2, S3, K4)",
-      "erläutern die Bedeutung von Bezugsystemen bei der Beschreibung von Bewegungen (S2, S3, K4)",
-      "deuten eine vereinfachte Darstellung des Cavendish-Experiments qualitativ als direkten Nachweis der allgemeinen Massenanziehung (E3, E6)",
-      "ermitteln mithilfe der Kepler‘schen Gesetze und des Newton’schen Gravitationsgesetzes astronomische Größen (E4, E8)"
-     ],
-     "original": [
-      "Das Sonnensystem",
-      "Die Keplerschen Gesetze",
-      "Das Gravitationsgesetz",
-      "Bewegungen im Gravitationsfeld",
-      "Die Gravitationsfeldstärke",
-      "Ebbe und Flut",
-      "Energie im Gravitationsfeld",
-      "Satelliten und Raumfahrt"
-     ],
-     "zeit": "ca. 12 Stunden",
-     "inhaltsfeld": "",
-     "bereich": 1
-    },
-    {
-     "titel": "Weltbilder: Von der Antike zu Kepler und Newton",
-     "frage": "",
-     "chips": [
-      "Wichtige Weltbilder.",
-      "Auf welche Weisen wurden neue Erkenntnisse gewonnen? ~ 4 Stunden"
-     ],
-     "lernen": [
-      "stellen Änderungen bei der Beschreibung von Bewegungen der Himmelskörper beim Übergang vom geozentrischen Weltbild zu modernen physikalischen Weltbildern auf der Basis zentraler astronomischer Beobachtungsergebnisse dar (S2, K1, K3, K10)",
-      "ordnen die Bedeutung des Wandels vom geozentrischen zum heliozentrischen Weltbild für die Emanzipation der Naturwissenschaften von der Religion ein (B8, K3)",
-      "beurteilen Informationen zu verschiedenen Weltbildern und deren Darstellungen aus unterschiedlichen Quellen hinsichtlich ihrer Vertrauenswürdigkeit und Relevanz (B2, K9, K10)"
-     ],
-     "original": [
-      "Das heutige kosmologische Weltbild"
-     ],
-     "zeit": "ca. 4 Stunden",
-     "inhaltsfeld": "",
-     "bereich": 1
-    },
-    {
-     "titel": "Elemente der Relativitätstheorie",
-     "frage": "",
-     "chips": [
-      "Was besagt Einsteins Relativitätstheorie (Auszüge)?",
-      "Welche Beobachtungen / Messungen stützen Einsteins Theorie?",
-      "Warum ist Einsteins Theorie so berühmt?",
-      "Wie lässt sich die Geschwindigkeit des Lichts bestimmen? ~ 8 Stunden"
-     ],
-     "lernen": [
-      "erläutern die Bedeutung der Invarianz der Lichtgeschwindigkeit als Ausgangspunkt für die Entwicklung der speziellen Relativitätstheorie (S2, S3, K4)",
-      "erläutern die Bedeutung von Bezugsystemen bei der Beschreibung von Bewegungen (S2, S3, K4)",
-      "erklären mit dem Gedankenexperiment der Lichtuhr unter Verwendung grundlegender Prinzipien der speziellen Relativitätstheorie das Phänomen der Zeitdilatation zwischen bewegten Bezugssystemen qualitativ und quantitativ (S3, S5, S7)",
-      "ziehen das Ergebnis des Gedankenexperiments der Lichtuhr zur Widerlegung der absoluten Zeit heran (E9, E11, K9, B1)",
-      "beurteilen Informationen zu verschiedenen Weltbildern und deren Darstellungen aus unterschiedlichen Quellen hinsichtlich ihrer Vertrauenswürdigkeit und Relevanz (B2, K9, K10) Michelson-Interferometer 109"
-     ],
-     "original": [
-      "Die Relativitätspostulate",
-      "Eigenzeit und Zeitdilatation",
-      "Myonen im Speicherring",
-      "Die Längenkontraktion",
-      "Masse und Energie"
-     ],
-     "zeit": "ca. 8 Stunden",
-     "inhaltsfeld": "",
-     "bereich": 5
-    }
-   ]
-  },
-  "Q": {
-   "kurs": {
-    "GK": {
-     "uvs": [
-      {
-       "titel": "Mechanische Schwingungen",
-       "frage": "",
-       "chips": [
-        "Schwingungen",
-        "Schwingungsvorgänge und Schwingungsgrößen",
-        "Periodendauern",
-        "Die harmonische Schwingung",
-        "Die Energie der harmonischen Schwingung",
-        "Energieabgabe – Dämpfung",
-        "Energiezufuhr – erzwungene Schwingungen",
-        "Überlagerung von Schwingungen"
-       ],
-       "lernen": [
-        "erläutern die Eigenschaften harmonischer mechanischer Schwingungen, deren Beschreibungsgrößen Elongation, Amplitude, Periodendauer, Frequenz, sowie deren Zusammenhänge (S1, S3)",
-        "erläutern am Beispiel des Federpendels Energieumwandlungen harmonischer Schwingungen (S1, S2, K4)",
-        "konzipieren Experimente zur Abhängigkeit der Periodendauer von Einflussgrößen beim Federpendel und werten diese unter Anwendung digitaler Werkzeuge aus (E6, S4, K6), (MKR 1.2)"
-       ],
-       "original": [
-        "Schwingungen",
-        "Schwingungsvorgänge und Schwingungsgrößen",
-        "Periodendauern",
-        "Die harmonische Schwingung",
-        "Die Energie der harmonischen Schwingung",
-        "Energieabgabe – Dämpfung",
-        "Energiezufuhr – erzwungene Schwingungen",
-        "Überlagerung von Schwingungen"
-       ],
-       "zeit": null,
-       "inhaltsfeld": "Klassische Wellen und geladene Teilchen in Feldern",
-       "bereich": 1
-      },
-      {
-       "titel": "Mechanische Wellen",
-       "frage": "",
-       "chips": [
-        "Wellenausbreitung",
-        "Von Schwingungen zur Welle",
-        "Wellen in der Ebene und im Raum",
-        "Eigenschaften von Wellen",
-        "Überlagerung von Wellen",
-        "Interferenz zweier Kreiswellen",
-        "Doppelspalt statt zwei Sender",
-        "Stehende Longitudinalwellen",
-        "Wellen bei Erdbeben",
-        "Doppler-Effekt"
-       ],
-       "lernen": [
-        "erläutern die Eigenschaften harmonischer mechanischer Wellen, deren Beschreibungsgrößen Elongation, Amplitude, Periodendauer, Frequenz, Wellenlänge und Ausbreitungsgeschwindigkeit sowie deren Zusammenhänge (S1, S3)",
-        "erklären mithilfe der Superposition stehende Wellen (S1, E6, K3)",
-        "erläutern die lineare Polarisation als Unterscheidungsmerkmal von Longitudinal- und Transversalwellen (S2, E3, K8)",
-        "beurteilen Maßnahmen zur Störgeräuschreduzierung hinsichtlich deren Eignung (B7, K1, K5). (VB B Z1)",
-        "erläutern mithilfe der Wellenwanne qualitativ auf der Grundlage des Huygens’schen Prinzips Kreiswellen, ebene Wellen sowie die Phänomene Reflexion, Brechung, Beugung und Interferenz (S1, E4, K6)"
-       ],
-       "original": [
-        "Wellenausbreitung",
-        "Von Schwingungen zur Welle",
-        "Wellen in der Ebene und im Raum",
-        "Eigenschaften von Wellen",
-        "Überlagerung von Wellen",
-        "Interferenz zweier Kreiswellen",
-        "Doppelspalt statt zwei Sender",
-        "Stehende Longitudinalwellen",
-        "Wellen bei Erdbeben",
-        "Doppler-Effekt"
-       ],
-       "zeit": null,
-       "inhaltsfeld": "Klassische Wellen und geladene Teilchen in Feldern",
-       "bereich": 2
-      },
-      {
-       "titel": "Wellenmodell des Lichts",
-       "frage": "",
-       "chips": [
-        "Licht als Welle",
-        "Beugung in der Wellenoptik",
-        "Interferenz mit Doppelspalt & Gitter",
-        "Polarisation von Licht",
-        "Einzelspalt und Interferenz",
-        "Interferometer",
-        "Michelson-Interferometer",
-        "Mach-Zehnder-Interferometer",
-        "Geschwindigkeit des Lichts",
-        "Messung der Lichtgeschwindigkeit"
-       ],
-       "lernen": [
-        "weisen anhand des Interferenzmusters bei Doppelspalt- und Gitterversuchen mit mono- und polychromatischem Licht die Wellennatur des Lichts nach und bestimmen daraus Wellenlängen (E7, E8, K4).",
-        "erläutern die lineare Polarisation als Unterscheidungsmerkmal von Longitudinal- und Transversalwellen (S2, E3, K8), Hinweis: Zur Vorbereitung des Kapitels Quantenobjekte, bietet sich die Behandlung der Interferometer an."
-       ],
-       "original": [
-        "Licht als Welle",
-        "Beugung in der Wellenoptik",
-        "Interferenz mit Doppelspalt & Gitter",
-        "Polarisation von Licht",
-        "Einzelspalt und Interferenz",
-        "Interferometer",
-        "Michelson-Interferometer",
-        "Mach-Zehnder-Interferometer",
-        "Geschwindigkeit des Lichts",
-        "Messung der Lichtgeschwindigkeit",
-        "Die Brechzahl"
-       ],
-       "zeit": null,
-       "inhaltsfeld": "Klassische Wellen und geladene Teilchen in Feldern",
-       "bereich": 2
-      },
-      {
-       "titel": "Elektrische Felder",
-       "frage": "",
-       "chips": [
-        "Ladung und elektrisches Feld",
-        "Elektrostatik",
-        "Elektrische Felder und ihre Darstellung",
-        "Elektrische Feldstärke und Spannung",
-        "Geladene Teilchen im E-Feld",
-        "Die Elektronenkanone",
-        "Bewegung im Querfeld",
-        "Linearbeschleuniger",
-        "Die Elementarladung – Millikan-Versuch",
-        "Grundlagen einfacher Stromkreise"
-       ],
-       "lernen": [
-        "stellen elektrische Feldlinienbilder von homogenen, Radial- und Dipolfeldern dar (S1, K6)",
-        "beschreiben Eigenschaften und Wirkungen homogener elektrischer Felder und erläutern die Definitionsgleichungen der elektrischen Feldstärke (S2, S3, E6)",
-        "erläutern am Beispiel des Plattenkondensators den Zusammenhang zwischen elektrischer Spannung und elektrischer Feldstärke im homogenen elektrischen Feld (S3)",
-        "berechnen Geschwindigkeitsänderungen von Ladungsträgern nach Durchlaufen einer elektrischen Spannung (S1, S3, K3)",
-        "erläutern die Erzeugung freier Elektronen durch den glühelektrischen Effekt, deren Beschleunigung beim Durchlaufen eines elektrischen (S4, S6, E6, K5)",
-        "entwickeln mithilfe des Superpositionsprinzips elektrische und magnetische Feldlinienbilder (E4, E6)",
-        "schließen aus der statistischen Auswertung einer vereinfachten Version des Millikan-Versuchs auf die Existenz einer kleinsten Ladung (E3, E11, K8), EMPFEHLUNG:"
-       ],
-       "original": [
-        "Ladung und elektrisches Feld",
-        "Elektrostatik",
-        "Elektrische Felder und ihre Darstellung",
-        "Elektrische Feldstärke und Spannung",
-        "Geladene Teilchen im E-Feld",
-        "Die Elektronenkanone",
-        "Bewegung im Querfeld",
-        "Linearbeschleuniger",
-        "Die Elementarladung – Millikan-Versuch",
-        "Grundlagen einfacher Stromkreise",
-        "Radialsymmetrisches Feld und Coulombsches Gesetz",
-        "Ladung und Feldstärke – die elektrische Feldkonstante ε0"
-       ],
-       "zeit": null,
-       "inhaltsfeld": "Klassische Wellen und geladene Teilchen in Feldern",
-       "bereich": 3
-      },
-      {
-       "titel": "Magnetische Felder",
-       "frage": "",
-       "chips": [
-        "Kraftwirkung des magnetischen Feldes",
-        "Das magnetische Feld",
-        "Elektrischer Strom und Magnetfeld",
-        "Stärke des Magnetfelds",
-        "Die Lorentzkraft",
-        "Die Masse geladener Teilchen",
-        "Zyklotron und Synchrotron",
-        "Hall-Effekt",
-        "Magnetfeld von Leiter und Spule",
-        "Magnetfeld im Innern einer Spule"
-       ],
-       "lernen": [
-        "stellen magnetische Feldlinienbilder von homogenen und Dipolfeldern dar (S1, K6)",
-        "beschreiben Eigenschaften und Wirkungen homogener magnetischer Felder und erläutern die Definitionsgleichungen der magnetischen Flussdichte (S2, S3, E6)",
-        "erläutern am Fadenstrahlrohr die Erzeugung freier Elektronen durch den glühelektrischen Effekt, deren Beschleunigung beim Durchlaufen eines elektrischen Felds sowie deren Ablenkung im homogenen magnetischen Feld durch die Lorentzkraft (S4, S6, E6, K5)",
-        "entwickeln mithilfe des Superpositionsprinzips magnetische Feldlinienbilder (E4, E6)",
-        "modellieren mathematisch die Beobachtungen am Fadenstrahlrohr und ermitteln aus den Messergebnissen die Elektronenmasse (E4, E9, K7)",
-        "wenden eine Messmethode zur Bestimmung der magnetischen Flussdichte an (E3, K6)",
-        "erschließen sich die Funktionsweise des Zyklotrons auch mithilfe von Simulationen (E1, E10, S1, K1)"
-       ],
-       "original": [
-        "Kraftwirkung des magnetischen Feldes",
-        "Das magnetische Feld",
-        "Elektrischer Strom und Magnetfeld",
-        "Stärke des Magnetfelds",
-        "Die Lorentzkraft",
-        "Die Masse geladener Teilchen",
-        "Zyklotron und Synchrotron",
-        "Hall-Effekt",
-        "Magnetfeld von Leiter und Spule",
-        "Magnetfeld im Innern einer Spule",
-        "Magnetfeld eines Leiters"
-       ],
-       "zeit": null,
-       "inhaltsfeld": "Klassische Wellen und geladene Teilchen in Feldern",
-       "bereich": 3
-      },
-      {
-       "titel": "Quantenobjekte",
-       "frage": "",
-       "chips": [
-        "Eigenschaften von Licht",
-        "Der Lichtelektrische Effekt",
-        "Lichtquantenhypothese",
-        "Energie von Fotoelektronen",
-        "Impuls eines Photons",
-        "Materie und Interferenz",
-        "Doppelspalt und Elektronen",
-        "Elektronenbeugung",
-        "Experimente mit einzelnen Quantenobjekten",
-        "Wahrscheinlichkeiten"
-       ],
-       "lernen": [
-        "erläutern anhand eines Experiments zum Photoeffekt den Quantencharakter von Licht (S1, E9, K3)",
-        "leiten anhand eines Experiments zum Photoeffekt den Zusammenhang von Energie, Wellenlänge und Frequenz von Photonen ab (E6, S6)",
-        "stellen die Lichtquanten- und De-Broglie-Hypothese sowie deren Unterschied zur klassischen Betrachtungsweise dar (S1, S2, E8, K4)",
-        "berechnen Energie und Impuls über Frequenz und Wellenlänge für Quantenobjekte (S3)",
-        "wenden die De-Broglie-Hypothese an, um das Beugungsbild beim Doppelspaltversuch mit Elektronen quantitativ zu erklären (S1, S5, E6, K9)",
-        "beurteilen an Beispielen die Grenzen und Gültigkeitsbereiche von Wellen- und Teilchenmodellen für Licht und Elektronen (E9, E11, K8)",
-        "erläutern die Determiniertheit der Zufallsverteilung der diskreten Energieabgabe beim Doppelspaltexperiment mit stark intensitätsreduziertem Licht (S3, E6, K3)",
-        "untersuchen mithilfe von Simulationen das Verhalten von Quantenobjekten am Doppelspalt (E4, E8, K6, K7), (MKR 1.2)",
-        "erklären an geeigneten Darstellungen die Wahrscheinlichkeitsinterpretation für Quantenobjekte (S1, K3)",
-        "erläutern bei Quantenobjekten die „Welcher-Weg“-Information als Bedingung für das Auftreten oder Ausbleiben eines Interferenzmusters in einem Interferenzexperiment (S2, K4)",
-        "beurteilen an Beispielen die Grenzen und Gültigkeitsbereiche von Wellen- und Teilchenmodellen für Licht und Elektronen (E9, E11, K8)",
-        "erläutern die Problematik der Übertragbarkeit von Begriffen aus der Anschauungswelt auf Quantenobjekte (B1, K8)",
-        "stellen die Kontroverse um den Realitätsbegriff der Kopenhagener Deutung dar (B8, K9)",
-        "beschreiben anhand quantenphysikalischer Betrachtungen die Grenzen der physikalischen Erkenntnisfähigkeit (B8, E11, K8)."
-       ],
-       "original": [
-        "Eigenschaften von Licht",
-        "Der Lichtelektrische Effekt",
-        "Lichtquantenhypothese",
-        "Energie von Fotoelektronen",
-        "Impuls eines Photons",
-        "Materie und Interferenz",
-        "Doppelspalt und Elektronen",
-        "Elektronenbeugung",
-        "Experimente mit einzelnen Quantenobjekten",
-        "Wahrscheinlichkeiten",
-        "Tunneleffekt",
-        "Schrödingers Katze",
-        "Die Unbestimmtheitsrelation",
-        "Verschränkte Zustände",
-        "Delayed-Choise-Versuche",
-        "Datenübermittlung mit polarisierten Photonen"
-       ],
-       "zeit": null,
-       "inhaltsfeld": "Quantenobjekte",
-       "bereich": 5
-      },
-      {
-       "titel": "Phänomen Induktion",
-       "frage": "",
-       "chips": [
-        "Phänomen Induktion",
-        "Induktionsversuche",
-        "Induktion und magnetischer Fluss",
-        "Magnetischer Fluss und Induktionsgesetz",
-        "Die Lorentzkraft als Ursache von Induktion",
-        "Die lenzsche Regel",
-        "Wirbelströme",
-        "Selbstinduktion"
-       ],
-       "lernen": [
-        "führen Induktionserscheinungen bei einer Leiterschleife auf die zeitliche Änderung der magnetischen Flussdichte oder die zeitliche Änderung der durchsetzten Fläche zurück (S1, S2, K4)",
-        "modellieren mathematisch das Entstehen von Induktionsspannungen für die beiden Spezialfälle einer zeitlich konstanten Fläche und einer zeitlich konstanten magnetischen Flussdichte (E4, E6, K7)",
-        "beschreiben das Induktionsgesetz mit der mittleren Änderungsrate und in differentieller Form des magnetischen Flusses (S7)",
-        "erläutern das Auftreten von Induktionsspannungen am Beispiel der Leiterschaukel durch die Wirkung der Lorentzkraft auf bewegte Ladungsträger (S3, S4, K4)"
-       ],
-       "original": [
-        "Phänomen Induktion",
-        "Induktionsversuche",
-        "Induktion und magnetischer Fluss",
-        "Magnetischer Fluss und Induktionsgesetz",
-        "Die Lorentzkraft als Ursache von Induktion",
-        "Die lenzsche Regel",
-        "Wirbelströme",
-        "Selbstinduktion"
-       ],
-       "zeit": null,
-       "inhaltsfeld": "Elektrodynamik und Energieübertragung",
-       "bereich": 3
-      },
-      {
-       "titel": "Energieversorgung",
-       "frage": "",
-       "chips": [
-        "Wechselstrom und Energietransport",
-        "Elektrische Leistung und Energie",
-        "Spannung und Stromstärke im Wechselstromkreis",
-        "Der Transformator",
-        "Fernleitung elektrischer Energie",
-        "Phasenbeziehungen zwischen Spannung und Strom",
-        "Wechselstromwiderstände"
-       ],
-       "lernen": [
-        "erklären das Entstehen von sinusförmigen Wechselspannungen in Generatoren mithilfe des Induktionsgesetzes (E6, E10, K3, K4)",
-        "untersuchen die gezielte Veränderung elektrischer Spannungen und Stromstärken durch Transformatoren mithilfe angeleiteter Experimente als Beispiel für die technische Anwendung der Induktion (S1, S4, E6, K8)",
-        "erklären am physikalischen Modellexperiment zu Freileitungen technologische Prinzipien der Bereitstellung und Weiterleitung von elektrischer Energie (S1, S3, K8)",
-        "beurteilen ausgewählte Beispiele zur Energiebereitstellung und -umwandlung unter technischen und ökologischen Aspekten (B3, B6, K8, K10), (VB ÜB Z2)",
-        "beurteilen das Potential der Energierückgewinnung auf der Basis von Induktionsphänomenen bei elektrischen Antriebssystemen (B7, K2)."
-       ],
-       "original": [
-        "Wechselstrom und Energietransport",
-        "Elektrische Leistung und Energie",
-        "Spannung und Stromstärke im Wechselstromkreis",
-        "Der Transformator",
-        "Fernleitung elektrischer Energie",
-        "Phasenbeziehungen zwischen Spannung und Strom",
-        "Wechselstromwiderstände"
-       ],
-       "zeit": null,
-       "inhaltsfeld": "Elektrodynamik und Energieübertragung",
-       "bereich": 3
-      },
-      {
-       "titel": "Elektromagnetische Schwingungen",
-       "frage": "",
-       "chips": [
-        "Der Kondensator als Ladungsspeicher",
-        "Elektrische Schwingungen",
-        "Der Schwingkreis",
-        "Idee der Rückkopplung",
-        "Elektromagnetische Wellen",
-        "Entstehung elektromagnetischer Wellen – Hertzscher Dipol",
-        "Elektromagnetisches Spektrum",
-        "Modulation",
-        "Eigenschaften elektromagnetischer Wellen (Mikrowellen)"
-       ],
-       "lernen": [
-        "beschreiben die Kapazität als Kenngröße eines Kondensators und bestimmen diese für den Spezialfall des Plattenkondensators in Abhängigkeit seiner geometrischen Daten (S1, S3)",
-        "untersuchen den Auf- und Entladevorgang bei Kondensatoren unter Anleitung experimentell (S4, S6, K6)",
-        "modellieren mathematisch den zeitlichen Verlauf der Stromstärke bei Auf- und Entladevorgängen bei Kondensatoren (E4, E6, S7)",
-        "interpretieren den Flächeninhalt zwischen Graph und Abszissenachse im Q-U-Diagramm als Energiegehalt des Plattenkondensators (E6, K8)",
-        "beurteilen den Einsatz des Kondensators als Energiespeicher in ausgewählten alltäglichen Situationen (B3, B4, K9).",
-        "erläutern qualitativ die bei einer elektromagnetischen Schwingung in der Spule und am Kondensator ablaufenden physikalischen Prozesse (S1, S4, E4)"
-       ],
-       "original": [
-        "Der Kondensator als Ladungsspeicher",
-        "Elektrische Schwingungen",
-        "Der Schwingkreis",
-        "Idee der Rückkopplung",
-        "Elektromagnetische Wellen",
-        "Entstehung elektromagnetischer Wellen – Hertzscher Dipol",
-        "Elektromagnetisches Spektrum",
-        "Modulation",
-        "Eigenschaften elektromagnetischer Wellen (Mikrowellen)"
-       ],
-       "zeit": null,
-       "inhaltsfeld": "Elektrodynamik und Energieübertragung",
-       "bereich": 3
-      },
-      {
-       "titel": "Atomphysik",
-       "frage": "",
-       "chips": [
-        "Entwicklung der Vorstellungen vom Atom",
-        "Historische Modelle",
-        "Quantenhafte Emission und Absorption",
-        "Franck-Hertz-Versuch",
-        "Diskrete Energieniveaus",
-        "Atommodell der Quantenphysik",
-        "Linearer Potentialtopf",
-        "Anwendungen",
-        "Röntgenstrahlung",
-        "Lumineszenz (Anwendung zu 1.1.2)"
-       ],
-       "lernen": [
-        "erklären die Energie emittierter und absorbierter Photonen am Beispiel von Linienspektren leuchtender Gase und Fraunhofer’scher Linien mit den unterschiedlichen Energieniveaus in der Atomhülle (S1, S3, E6, K4)",
-        "interpretieren die Messergebnisse des Franck-Hertz-Versuchs (E6, E8, K8)",
-        "stellen an der historischen Entwicklung der Atommodelle die spezifischen Eigenschaften und Grenzen naturwissenschaftlicher Modelle heraus (B8, E9).",
-        "identifizieren vorhandene Stoffe in der Sonnen- und Erdatmosphäre anhand von Spektraltafeln des Sonnenspektrums (E3, E6, K1)",
-        "beschreiben die Energiewerte für das Wasserstoffatom mithilfe eines quantenphysikalischen Atommodells (S2)",
-        "interpretieren die Orbitale des Wasserstoffatoms als Veranschaulichung der Nachweiswahrscheinlichkeiten für das Elektron (S2, K8)",
-        "erklären die Entstehung von Bremsstrahlung und charakteristischer Röntgenstrahlung (S3, E6, K4)",
-        "erklären das charakteristische Röntgenspektrum mit den Energieniveaus der Atomhülle (E6)"
-       ],
-       "original": [
-        "Entwicklung der Vorstellungen vom Atom",
-        "Historische Modelle",
-        "Quantenhafte Emission und Absorption",
-        "Franck-Hertz-Versuch",
-        "Diskrete Energieniveaus",
-        "Atommodell der Quantenphysik",
-        "Linearer Potentialtopf",
-        "Anwendungen",
-        "Röntgenstrahlung",
-        "Lumineszenz (Anwendung zu 1.1.2)",
-        "Der Laser - Funktionsprinzip"
-       ],
-       "zeit": null,
-       "inhaltsfeld": "Strahlung und Materie",
-       "bereich": 5
-      },
-      {
-       "titel": "Kerne und Teilchen",
-       "frage": "",
-       "chips": [
-        "Strahlung und Kernaufbau",
-        "Ionisierende Strahlung",
-        "Aufbau eines Atomkerns",
-        "Arten der Kernumwandlung",
-        "Quellen",
-        "Das Zerfallsgesetz",
-        "Abstand und Abschirmung",
-        "Strahlenmessgrößen",
-        "Biologische Wirkung",
-        "Zählung und Energiemessung"
-       ],
-       "lernen": [
-        "unterscheiden α-, β-, γ- Strahlung, Röntgenstrahlung und Schwerionenstrahlung als Arten ionisierender Strahlung (S1)",
-        "ordnen verschiedene Frequenzbereiche dem elektromagnetischen Spektrum zu (S1, K6)",
-        "erläutern den Begriff der Radioaktivität und zugehörige Kernumwandlungsprozesse auch mithilfe der Nuklidkarte (S1, S2)",
-        "erläutern qualitativ den Aufbau eines Atomkerns aus Nukleonen, den Aufbau der Nukleonen aus Quarks sowie die Rolle der starken Wechselwirkung für die Stabilität des Kerns (S1, S2)",
-        "wenden das zeitliche Zerfallsgesetz für den radioaktiven Zerfall an (S5, S6, K6)",
-        "ermitteln im Falle eines einstufigen radioaktiven Zerfalls anhand der gemessenen Zählraten die Halbwertszeit (E5, E8, S6)",
-        "untersuchen experimentell anhand der Zählraten bei Absorptionsexperimenten unterschiedliche Arten ionisierender Strahlung (E3, E5, S4, S5)",
-        "begründen wesentliche biologisch-medizinische Wirkungen ionisierender Strahlung mit deren typischen physikalischen Eigenschaften (E6, K3)",
-        "quantifizieren mit der Größe der effektiven Dosis die Wirkung ionisierender Strahlung und bewerten daraus abgeleitete Strahlenschutzmaßnahmen (E8, S3, B2).",
-        "bewerten die Bedeutung hochenergetischer Strahlung hinsichtlich der Gesundheitsgefährdung sowie ihres Nutzens bei medizinischer Diagnose und Therapie (B5, B6, K1, K10).",
-        "erläutern den Aufbau und die Funktionsweise des Geiger-Müller-Zählrohrs als Nachweisgerät für ionisierende Strahlung (S4, S5, K8)",
-        "erklären anhand des Zusammenhangs E = m c² die Grundlagen der Energiefreisetzung bei Kernspaltung und - fusion über den Massendefekt (S1) (S1)",
-        "erläutern qualitativ an der β−-Umwandlung die Entstehung der Neutrinos mithilfe der schwachen Wechselwirkung und ihrer Austauschteilchen (S1, S2, K4)",
-        "vergleichen verschiedene Vorstellungen von der Materie mit den Konzepten der modernen Physik (B8, K9)."
-       ],
-       "original": [
-        "Strahlung und Kernaufbau",
-        "Ionisierende Strahlung",
-        "Aufbau eines Atomkerns",
-        "Arten der Kernumwandlung",
-        "Quellen",
-        "Das Zerfallsgesetz",
-        "Abstand und Abschirmung",
-        "Strahlenmessgrößen",
-        "Biologische Wirkung",
-        "Zählung und Energiemessung",
-        "Massendifferenz und Energie",
-        "Kernspaltung & Kernfusion",
-        "Kernreaktor",
-        "Modelle und Anwendungen",
-        "Kernmodell der Quantenphysik",
-        "Elementarteilchen – Konzepte und Ideen"
-       ],
-       "zeit": null,
-       "inhaltsfeld": "Strahlung und Materie",
-       "bereich": 5
-      }
-     ]
-    },
-    "LK": null
-   }
-  }
- }
-}</script>
+<script id="physik-daten" type="application/json">{"bereiche":{"1":"Mechanik","2":"Optik, Wellen & Schall","3":"Elektrizität & Magnetismus","4":"Wärme & Energie","5":"Atom-, Kern- & Quantenphysik"},"stufen":{"6":{"uvs":[{"titel":"Leben bei verschiedenen Temperaturen","chips":["Temperatur und Wärme","Temperatur messen","Die Temperatur","Die Temperaturmessung","Messwerte im Diagramm darstellen","Durchschnittstemperatur berechnen","Wärmeausdehnung","Ausdehnung bei Erwärmung","Fest, flüssig und gasförmig","Die Aggregatzustände","Das Teilchenmodell","Die Anomalie des Wassers","Thermische Energie unterwegs","Thermische Energie wird transportiert"],"lernen":["lernen die physikalische Größe Temperatur sowie die Messung der Temperatur mithilfe von Thermometern kennen (S. 40–41)","erheben Daten, fassen sie in Tabellen zusammen und erstellen geeignete Diagramme (S. 42–43)","erarbeiten die Volumenausdehnung bei Erwärmung als Wirkung von Wärme anhand von Experimenten und Beispielen aus Alltag und Technik (S. 44–48)","lernen die Aggregatzustände und ihre Veränderung als Wirkung der Wärme kennen (S. 49–51)","interpretieren die Wärmeausdehnung sowie die Aggregatzustände und Zustandsänderungen von Stoffen mithilfe des Teilchenmodells (S. 52–55)","diskutieren die Bedeutung der Anomalie des Wassers für Vorgänge des Alltags und der Natur (S. 56)","untersuchen experimentell die Prozesse des Transports thermischer Energie durch Wärmestrahlung, -mitführung und -leitung (S. 57–61)","unterscheiden mithilfe von Phänomenen des Alltags, der Technik und der Natur die unterschiedlichen Formen des Wärmetransports (S. 62–67)","wenden Erkenntnisse über den Wärmetransport auf Verfahren der Wärmedämmung an (S. 68–69)."],"original":["unterscheiden und verwenden die Begriffe Temperatur und Wärme sachgerecht,","beschreiben die Veränderung der thermischen Energie unterschiedlicher Körper sowie den Temperaturausgleich zwischen Körpern durch die Zufuhr oder Abgabe von Wärme an alltäglichen Beispielen,","erläutern die Celsiusskala und ihre Bedeutung für die Temperaturmessung,","messen Temperaturen mit analogen und digitalen Instrumenten,","übertragen erhobene Messdaten zu Temperaturentwicklungen nach Anleitung in Tabellen und Diagramme. Sie können Daten aus Diagrammen entnehmen.","beschreiben an Beispielen aus Alltag und Technik Auswirkungen der Wärmeausdehnung von Körpern und Stoffen,","erklären Aggregatzustände, Übergänge zwischen ihnen sowie die Wärmeausdehnung von Stoffen mit einem einfachen Teilchenmodell,","beschreiben die Auswirkungen der Anomalie des Wassers und deren Bedeutung für natürliche Vorgänge,","ziehen aus Beobachtungen und Versuchen zu Wärmephänomenen einfache Schlussfolgerungen und stellen diese nachvollziehbar dar,","erklären Verfahren der Wärmedämmung anhand der jeweils relevanten Formen des Wärmetransports (Mitführung, Leitung, Strahlung),","begründen reflektiert und verantwortungsvoll Schutzmaßnahmen gegen Gefahren durch Verbrennung und Unterkühlung.","1.2 Digitale Werkzeuge: Temperatur messen (S. 39)","2.1 Informationsrecherche: Durchschnittstemperatur, Die Aggregatzustände, Treibhauseffekt. Wärmedämmung (S. 43, 50, 66, 69)","3.3 Kommunikation und Kooperation in der Gesellschaft: Wärmeleitung (S. 67)","4.1 Fest, flüssig, gasförmig (S. 49)"],"zeit":null,"bereich":4},{"titel":"Elektrischer Strom und Magnetismus","chips":["Elektrizität im Alltag","Elektrische Stromkreise","Schaltsymbole und Schaltpläne","Schaltungen mit mehreren Geräten oder Schaltern","Schaltungen mit zwei Schaltern","Wie können mehrere Geräte betrieben werden?","Nutzen und Gefahren des elektrischen Stroms","Gute Leiter, schlechte Leiter und Isolatoren","Elektrische Quellen","Das Teilchenmodell wird erweitert - Elektronen","Wirkungen des elektrischen Stroms","Ein Modell für den elektrischen Strom","Herstellung von Magneten","Das Magnetfeld","Die Erde als Magnet","Elektromagnete"],"lernen":["lernen die Grundlagen eines elektrischen Stromkreises und seine Verwendung in Alltag und Technik kennen (S.79–82)","stellen elektrische Schaltungen mithilfe von Schaltsymbolen und Schaltplänen dar und bauen einfache elektrische Schaltungen sowie UND- und ODER-Schaltungen auf (S. 83–87)","ermitteln und unterscheiden die Wirkungen des elektrischen Stroms (S. 88–89, 94)","untersuchen in Experimenten verschiedene Materialen auf ihre Leitungseigenschaften (S. 90–91)","interpretieren den elektrischen Stromfluss in einem geschlossenen Stromkreis mittels eines Modells frei beweglicher Elektronen","diskutieren Nutzen und Gefahren sowie Schutzeinrichtungen (Isolatoren, Sicherungen) (S. 96–100)","erarbeiten experimentell die Eigenschaften von Magneten (S. 105–107)","wenden Erkenntnisse über Magneten auf die Nutzung als Kompass zur Orientierung an (S. 108)","lernen über das Modell der Elementarmagneten die Magnetisierung und Entmagnetisierung eisenhaltiger Gegenstände kennen","untersuchen die Richtung und Stärke magnetischer Kräfte im Raum mittels des Modells der Feldlinien (S. 110–111)","verknüpfen Erkenntnisse über elektrische Ströme und Magneten zum Elektromagneten (S. 112–114)."],"original":["erläutern den Aufbau einfacher elektrischer Stromkreise und begründen die Verwendung von Reihen- und Parallelschaltungen,","planen und bauen zweckgerichtet elektrische Schaltungen auf,","stellen Stromkreise durch Schaltsymbole und Schaltpläne dar,","ermitteln in eigenständig geplanten Versuchen die Leitungseigenschaften verschiedener Stoffe und ziehen daraus Schlüsse zu ihrer Verwendbarkeit auch unter Sicherheitsaspekten,","beschreiben fachsprachlich angemessen Stromwirkungen und geben Beispiele für ihre Nutzung in elektrischen Geräten an,","erklären in Grundzügen die Funktionsweise von elektrischen Sicherungseinrichtungen,","entscheiden auf einem grundlegenden Niveau über die gefahrlose Nutzbarkeit von elektrischen Geräten,","nennen Möglichkeiten zur sparsamen Nutzung elektrischer Energie im Haushalt und bewerten diese unter verschiedenen Kriterien,","nenne und bewerten Risiken und Sicherheitsmaßnahmen beim Experimentieren mit elektrischen Geräten","benennen ferromagnetische Elemente,","erklären Kräfte zwischen Magneten sowie zwischen ihnen und magnetisierbaren Stoffen mit der Fernwirkung über magnetische Felder,","beschreiben in Grundzügen Eigenschaften des Magnetfeldes der Erde und erklären die Funktionsweise eines Kompasses,","erkunden durch systematisches Probieren einfache magnetische Phänomene,","erklären die Magnetisierung bzw. Entmagnetisierung von Stoffen und die Untrennbarkeit der Pole mit dem Modell der Elementarmagnete,","untersuchen die Struktur von Magnetfeldern mit geeigneten Hilfsmitteln und machen sie sichtbar,","1.1 Medienausstattung: Der Kurzschluss, Isolatoren, Schutzleiter (S. 96, 98, 99-100)","2.1 Informationsrecherche: Die Erde als Magnet (S. 111)"],"zeit":null,"bereich":3},{"titel":"Schall und Hören","chips":["Schall und Lärm","Töne sind Schwingungen","Wie Töne entstehen","Lautstärke und Tonhöhe","Schall unterwegs","Schallwellen","Schall unterwegs in unterschiedlichen Stoffen","Tiere hören anders – Ultraschall und Infraschall"],"lernen":["identifizieren Schallquellen und interpretieren Schall als Vibration eines Gegenstandes (S. 121–122)","untersuchen die Veränderungen des Schalls durch Änderung von Lautstärke und Tonhöhe (S. 123–126)","erarbeiten die Ausbreitung von Schall als Welle und in Hinblick auf Schallgeschwindigkeiten in unterschiedlichen Medien (S. 127–130)","unterscheiden Absorption und Reflexion von Schall anhand von Beispielen (S. 128–129)","lernen mithilfe von Beispielen aus der Natur und Technik die Eigenschaften von hörbarem Schall, Ultra- und Infraschall kennen und zu unterscheiden (S. 131)","messen Lautstärken und bestimmen Hörbereiche mit Apps und Tongeneratoren (S. 132–133)","beurteilen Schall nach seiner Lautstärke (dB(A)) und ordnen ihn entsprechenden Skalenwerten zu (S. 134)","wenden Erkenntnisse über Lärm und seine Auswirkungen auf die menschliche Gesundheit auf Methoden des Lärmschutzes an und entwickeln Idee zur Lärmreduzierung (S. 135)."],"original":["beschreiben die Entstehung und Wahrnehmung von Schall durch Schwingungen von Gegenständen mit den bestimmenden Grundgrößen Frequenz und Lautstärke,","zeigen und erläutern an ausgewählten Musikinstrumenten Möglichkeiten der Veränderung von Tonhöhe und Lautstärke,","erklären die Ausbreitung von Schall in verschiedenen Medien mithilfe eines Teilchenmodells,","erläutern Reflexion und Absorption von Schall anhand von Beispielen,","geben Eigenschaften von hörbarem Schall, Ultraschall und Infraschall an und nennen dazu Beispiele aus Natur, Medizin und Technik,","führen mittels in digitalen Alltagsgeräten verfügbarer Sensoren Schallpegelmessungen durch und interpretieren diese,","analysieren in Grundzügen Schallschwingungen und deren Darstellungen auf digitalen Geräten,","ordnen Lautstärken den Skalenwerten des Schalldruckpegels zu und erläutern Auswirkungen von Schall und Lärm auf die menschliche Gesundheit,","benennen und beurteilen Maßnahmen, die in verschiedenen Alltagssituationen zur Vermeidung von und zum Schutz vor Lärm ergriffen werden können,","bewerten Lärmbelästigungen und ziehen daraus begründete Konsequenzen.","1.2 Digitale Werkzeuge: Sichtbare Schwingungen, Tiere hören anders, Lärm (S. 126, 131, 132)","2.1 Informationsrecherche: Lautstärke und Tonhöhe, Tiere hören anders (S. 125, 131)","3.1 Kommunikations- und Kooperationsprozesse: Schallausbreitung (S. 137)","3.3 Kommunikation und Kooperation in der Gesellschaft: Schutz vor Lärm (S. 135)","4.1 Medienproduktion und Präsentation: Sichtbare Schwingungen (S. 126)"],"zeit":null,"bereich":2},{"titel":"Licht und Sehen","chips":["Die Ausbreitung des Lichts","Wie sich Licht ausbreitet","Licht wird gestreut, absorbiert oder durchgelassen","Licht wird reflektiert","Streulicht ist wichtig fürs Sehen","Vorstellungen vom Sehen","Infrarot und Ultraviolett","Schatten","Wie Schatten entstehen","Mehr als nur ein Schatten","Unscharfe Schatten","Löcher zeichnen Bilder"],"lernen":["untersuchen die Ausbreitung von Licht und unterscheiden Lichtbündel von Lichtstrahlen (Lichtstrahlmodell) (S. 143–146)","beurteilen Vorstellungen vom Sehen aus der Geschichte der Naturwissenschaften und vergleichen diese mit Erkenntnissen über die Streuung und Absorption von Licht (S. 147, 150)","erarbeiten experimentell das Reflexionsgesetz (S. 148)","unterscheiden Lichtquellen und Streulicht in der Technik und im Alltag und diskutieren diese im Hinblick auf Schutz und Sicherheit im Straßenverkehr (S. 149, 151)","beschreiben den Prozess der Energieumwandlung anhand unterschiedlicher Lampentypen (S. 152)","lernen die Wirkungen und Gefahren verschiedener Strahlungen und ihre Anwendungen im Alltag und in der Technik (S. 153)","führen Experimente zur Entstehung von Schatten aus (S. 154–156)","untersuchen den Einfluss der Lichtquelle auf Schattenraum und Schattenbild und erstellen passende Skizzen (S. 157–158)","leiten die Funktionsweise einer Lochkamera mithilfe eines selbstgebauten Modells her und testen Möglichkeiten zur Veränderung des Lochkamerabilds (S. 159–164)."],"original":["erklären die Ausbreitung des Lichts mit dem Strahlenmodell und erläutern den Modellcharakter des Begriffs Lichtstrahl,","erklären die Sichtbarkeit und die Erscheinung von Gegenständen mit der Streuung, der gerichteten Reflexion und der Absorption von Licht an ihren Oberflächen,","vergleichen kritisch Vorstellungen zum Sehen und erklären das Sehen mit dem Strahlenmodell des Lichts und dem Sender-Empfänger-Modell,","unterscheiden Infrarotstrahlung, sichtbares Licht und Ultraviolettstrahlung und beschreiben an Beispielen ihre Wirkungen,","wählen geeignete Schutzmaßnahmen gegen die Gefährdungen durch helles Licht, Infrarotstrahlung und UV-Strahlung aus,","erläutern die Entstehung von Abbildungen bei einer Lochkamera und Möglichkeiten zu deren Veränderung,","konstruieren zeichnerisch Abbildungen an einer Lochkamera sowie Schattenphänomene,","beschreiben an Beispielen aus Technik und Alltag die Umwandlung von Lichtenergie in andere Energieformen,","begründen mithilfe optischer Phänomene die Schutz- bzw. Signalwirkung von Alltagsgegenständen.","2.1 Informationsrecherche: Camera obscura (S. 163)","2.2 Informationsauswertung: Lebendige Lichtquellen, Camera obscura (S. 149, 163)","5.1 Medienanalyse: Eine Lochkamera bauen (S. 160)"],"zeit":null,"bereich":2}]},"8":{"uvs":[{"titel":"Optische Instrumente","chips":["Bilder erzeugen mit Löchern und Sammellinsen","Löcher erzeugen Bilder","Löcher zeichnen Bilder","Sammellinsen zeichnen scharfe Bilder","Sammellinsen führen Licht zusammen","Bilder der Sammellinse","Scharfe und unscharfe Bilder bei der Sammellinse","Große Bilder – kleine Bilder","Größe und Lage des Bildes","Verschiedene Sammellinsen – verschieden große Bilder","Wahrnehmung – was wir in Netzhautbildern erkennen","Sehen und Erkennen – Auge und Gehirn","Reflexion und Brechung des Lichts","Spiegelbilder und Reflexion"],"lernen":["die Eigenschaften u nd die Entstehung des Spiegelbildes mithilfe des Reflexionsgesetzes und der geradlinigen Ausbreitung des Lichts erklären. (S. 31–33)","die Abhängigkeit der Brechung bzw. Totalreflexion des Lichts von den Parametern Einfallswinkel und optische Dichte qualitativ erläutern. (S. 34–37)","die Funktion von Linsen für die Bilderzeugung im Auge und für den Aufbau einfacher optischer Systeme beschreiben. (S. 15–25; S. 38; S. 44–51)","die Funktionsweise von Endoskop und Glasfaserkabel mithilfe der Totalreflexion erklären. (S. 40)","die Entstehung eines Spektrums durch die Farbzerlegung von Licht am Prisma darstellen und infrarotes, sichtbares und ultraviolettes Licht einem Spektralbereich zuordnen. (S. 52–58)"],"original":["anhand einfacher Handexperimente die charakteristischen Eigenschaften verschiedener Linsentypen bestimmen. (S. 15; S; 19)","für Versuche zu optischen Abbildungen geeignete Linsen auswählen und diese sachgerecht anordnen und kombinieren. (S. 15; S. 19; S. 21; S. 24; S. 45)","unter Verwendung eines Lichtstrahlmodells die Bildentstehung bei Sammellinsen sowie den Einfluss der Veränderung von Parametern mittels digitaler Werkzeuge erläutern (Geometrie -Software,)","digitale Farbmodelle (RGB, CMYK) mithilfe der Farbmischung von Licht erläutern und diese zur Erzeugung von digitalen Produkten verwenden. (S. 56 –60)","Gefahren beim Experimentieren mit intensiven Lichtquellen (Sonnenlicht, Laserstrahlung) einschätzen und Schutzmaßnahmen vornehmen. (S. 75; S. 94)","optische Geräte hinsichtlich ihres Nutzens für sich selbst, für die Forschung und für die Gesellschaft beurteilen. (S. 48; S. 51; S. 76)"],"zeit":null,"bereich":2},{"titel":"Kleines groß sehen – Fernes nah sehen","chips":["Lupe und Mikroskop","Die Sammellinse als Lupe","Das Mikroskop","Fernrohr","Das astronomische Fernrohr","Die Welt der Farben","Weißes Licht steckt voller Farben","Weißes Licht wird zerlegt","Farbige Lichter und farbige Dinge","Monitorfarben sind RGB-Farben","CMYK-Farben","Sterne und Weltall","Unser Sonnensystem","Sonne, Mond und Erde"],"lernen":["Aufbau des Sonnensystems sowie wesentliche Eigenschaften der Himmelsobjekte Sterne, Planeten, Monde und Kometen, erläutern. (S. 75–79; S. 83–89)","den Wechsel der Jahreszeiten als Folge der Neigung der Erdachse erklären. (S. 73)","mit dem Maß Lichtjahr Entfernungen im Weltall angeben und vergleichen. (S. 78; S. 86)","typische Stadien der Sternentwicklung in Grundzügen darstellen","(S. 88; S. 291)","mithilfe von Beispielen Auswirkungen der Gravitation sowie das Phänomen der Schwerelosigkeit erläutern. (S. 135–138; S. 166–168)"],"original":["den Ablauf und die Entstehung von Mondphasen sowie von Sonnen- und Mondfinsternissen modellhaft erklären. (S. 69–72)","die Bedeutung der Erfindung des Fernrohrs für die Entwicklung des Weltbildes und der Astronomie erläutern. (S. 76–779)","an anschaulichen Beispielen qualitativ demonstrieren, wie Informationen über das Universum gewonnen werden können (Parallaxen, Spektren). (S.74; S. 86–87)","wissenschaftliche und andere Vorstellungen über die Welt und ihre Entstehung kritisch vergleichen und begründet bewerten. (S. 72; S. 76–77; S. 89; S.92)","auf der Grundlage von Informationen zu aktuellen Projekten der Raumfahrt die wissenschaftliche und gesellschaftliche Bedeutung dieser Projekte nach ausgewählten Kriterien beurteilen. (S. 74)"],"zeit":null,"bereich":2},{"titel":"Bewegung, Kraft und Energie","chips":["Bewegungen beschreiben – Physik im Alltag","Geschwindigkeit","Die Geschwindigkeit eine physikalische Größe","Momentan- und Durchschnittsgeschwindigkeit","Bewegungen untersuchen","Bewegungen unterscheiden","Bewegungen aufzeichnen","Spezielle Bewegungsarten","Geschwindigkeiten ändern sich – Beschleunigung","Kräfte","Überall Kräfte","Woran man Kräfte erkennt","Wechselwirkungskräfte","Körper im Kräftegleichgewicht"],"lernen":["verschiedene Arten von Bewegungen mithilfe der Begriffe Geschwindigkeit und Beschleunigung analysieren und beschreiben. (S. 104; S. 111; S. 115–116)","mittlere und momentane Geschwindigkeiten unterscheiden und Geschwindigkeiten bei gleichförmigen Bewegungen berechnen. (S. 104–105; S. 108)","Kräfte als vektorielle Größen beschreiben und einfache Kräfteadditionen grafisch durchführen. (S.124; S. 131; S. 133–134)","die Konzepte Kraft und Gegenkraft sowie Kräfte im Gleichgewicht unterscheiden und an Beispielen erläutern. (S. 125–127)","die Goldene Regel anhand der Kraftwandlung an einfachen Maschinen erläutern. (S. 153–156)","Spannenergie, Bewegungsenergie und Lageenergie sowie andere Energieformen bei physikalischen Vorgängen identifizieren. (S. 143–145)","Energieumwandlungsketten aufstellen und daran das Prinzip der Energieerhaltung erläutern. (S. 145–146)","mithilfe der Definitionsgleichung für Lageenergie einfache Energieumwandlungsvorgänge berechnen. (S: 148–150)","den Zusammenhang zwischen Energie und Leistung erläutern und formal beschreiben. (S. 158)"],"original":["Kurvenverläufe in Orts-Zeit-Diagrammen interpretieren. (S. 112–116)","Messdaten zu Bewegungen oder Kraftwirkungen in einer Tabellenkalkulation mit einer angemessenen Stellenzahl aufzeichnen, mithilfe von Formeln und Berechnungen auswerten sowie gewonnene Daten in sinnvollen, digital erstellten Diagrammformen darstellen. (S. 129–130)","Kräfte identifizieren, die zu einer Änderung des Bewegungszustands oder einer Verformung von Körpern führen. (S. 123–125)","Massen und Kräfte messen sowie Gewichtskräfte berechnen. (S. 129; S. 135–136; S. 138)","die Goldene Regel der Mechanik mit dem Energieerhaltungssatz begründen. (S. 146; S. 154; S. 156)","Einsatzmöglichkeiten und den Nutzen von einfachen Maschinen und Werkzeugen zur Bewältigung von praktischen Problemen aus einer physikalischen Sichtweise bewerten. (S. 153–156)","Zugänge zu Gebäuden unter dem Gesichtspunkt Barrierefreiheit beurteilen. (S. 153; S. 163)","Nahrungsmittel auf Grundlage ihres Energiegehalts bedarfsangemessen bewerten. (S. 151; S. 160)","an Beispielen Leistungen berechnen und Leistungswerte mit Werten der eigenen Körperleistung vergleichen. (S. 157–161)"],"zeit":null,"bereich":1}]},"9":{"uvs":[{"titel":"Druck und Auftrieb","chips":["Schweben, Steigen, Sinken","Schwere und leichte Stoffe – die Dichte","Schweben, Steigen und Sinken","Druck in Gasen und Flüssigkeiten","Vorstellungen vom Druck","Druck und Kraft","Das hydrostatische Paradoxon","Berechnung des Schweredrucks","Druckunterschiede sorgen für Ströme","Kräfte beim Tauchen und Schwimmen","Der Auftrieb","Schwimmen"],"lernen":["bei Flüssigkeiten und Gasen die Größen Druck und Dichte mithilfe des Teilchenmodells erläutern. (S. 174–175; S. 179)","die Formelgleichungen für Druck und Dichte physikalisch erläutern und daraus Verfahren zur Messung dieser Größen ableiten. (S. 174–175; S. 180–181)","den Druck bei unterschiedlichen Flächeneinheiten in der Einheit Pascal angeben. (S. 180)","Auftriebskräfte unter Verwendung des Archimedischen Prinzips berechnen. (S. 187–188)"],"original":["den Schweredruck in einer Flüssigkeit in Abhängigkeit von der Tiefe bestimmen. (S. 181)","die Entstehung der Auftriebskraft auf Körper in Flüssigkeiten mithilfe des Schweredrucks erklären und in einem mathematischen Modell beschreiben. (S. 187–188)","die Nichtlinearität des Luftdrucks in Abhängigkeit von der Höhe mithilfe des Teilchenmodells qualitativ erklären.","anhand physikalischer Faktoren begründen, ob ein Körper in einer Flüssigkeit oder einem Gas steigt, sinkt oder schwebt. (S. 175; S. 177; S. 188)","Angaben und Messdaten von Druckwerten in verschiedenen Alltagssituationen auch unter dem Aspekt der Sicherheit sachgerecht interpretieren und bewerten."],"zeit":null,"bereich":1},{"titel":"Elektrizität","chips":["Wenn es knistert und funkt","Materie und Ladung","Elektrisch geladen","Atommodell und Ladung","Elektrisches Feld und Feldlinien","Elektroskop – ein Messgerät für Ladung","Ladungstrennung und Spannung","Ladung unterwegs","Ladungsausgleich","Elektrischer Strom und elektrische Leiter","Watt, Volt & Co.","Energieübertragung mit Elektrizität","Energiestrom und Energiemenge","Stromkreise und elektrische Stromstärke"],"lernen":["die Funktionsweise eines Elektroskops erläutern. (S. 205)","die Entstehung einer elektrischen Spannung durch den erforderlichen Energieaufwand bei der Ladungstrennung qualitativ erläutern. (S. 206)","zwischen der Definition des elektrischen Widerstands und dem ohmschen Gesetz unterscheiden. (S. 234–238)","die Beziehung von Spannung, Stromstärke und Widerstand in Reihen- und Parallelschaltungen mathematisch beschreiben und an konkreten Beispielen plausibel machen. (S. 241–242)","Wirkungen von Elektrizität auf den menschlichen Körper in Abhängigkeit von der Stromstärke und Spannung erläutern. (S. 246)","den prinzipiellen Aufbau einer elektrischen Hausinstallation einschließlich der Sicherheitsvorrichtungen darstellen. (S. 243–245)","die Definitionsgleichungen für elektrische Energie und elektrische Leistung erläutern und auf ihrer Grundlage Berechnungen durchführen. (S. 213–214; S. 225; S. 228)","Energiebedarf und Leistung von elektrischen Haushaltsgeräten ermitteln und die entsprechenden Energiekosten berechnen. (S. 214)"],"original":["Wechselwirkungen zwischen geladenen Körpern durch elektrische Felder beschreiben. (S. 202–204)","elektrische Aufladung und Leitungseigenschaften von Stoffen mithilfe eines einfachen Elektronen-Atomrumpf-Modells erklären. (S. 203)","elektrische Schaltungen sachgerecht entwerfen, in Schaltplänen darstellen und anhand von Schaltplänen aufbauen. (S. 217; S. 221; S. 223–224; S. 227; S. 231–233)","Spannungen und Stromst ärken messen und elektrische Widerstände ermitteln. (S. 216–221; S. 223–227; S. 231–234)","die mathematische Modellierung von Messdaten in Form einer Gleichung unter Angabe von abhängigen und unabhängigen Variablen erläutern und dabei auftretende Konstanten interpretieren. (S. 236–237)","Versuche zu Einflussgrößen auf den elektrischen Widerstand unter Berücksichtigung des Prinzips der Variablenkontrolle planen und durchführen.","(S. 232)","Gefahren und Sicherheitsmaßnahmen beim Umgang mit elektrischem Strom und elektrischen Geräten beurteilen. (S. 243–246)","Kaufentscheidungen für elektrische Geräte unter Abwägung physikalischer und außerphysikalischer Kriterien treffen. (S. 215)"],"zeit":null,"bereich":3}]},"10":{"uvs":[{"titel":"Gefahren und Nutzen ionisierender Strahlung","frage":"Ist ionisierende Strahlung gefährlich oder nützlich?","chips":["Alpha-, Beta-, Gamma","Halbwertszeit","Röntgenstrahlung","Wechselwirkung von Strahlung mit Materie:","Nachweismethoden","Absorption","Schutzmaßnahmen"],"lernen":[],"original":["UF4: Übertragung und Vernetzung","E1: Problem und Fragestellung","E7: Naturwissenschaftliches Denken und Arbeiten","K2: Informationsverarbeitung"],"zeit":"ca. 12 Ustd.","inhaltsfeld":"Ionisierende Strahlung","bereich":5},{"titel":"Energie aus Atomkernen","frage":"Ist die Kernenergie beherrschbar?","chips":["Kernspaltung","Kernfusion","Kernkraftwerke","Endlagerung und Problematik"],"lernen":[],"original":["K2: Informationsverarbeitung","K4: Argumentation","B1: Fakten- und Situationsanalyse","B3: Abwägung und Entscheidung"],"zeit":"ca. 10 Ustd.","inhaltsfeld":"Ionisierende Strahlung","bereich":5},{"titel":"Versorgung mit elektrischer Energie","frage":"Wie erfolgt die Übertragung der elektrischen Energie vom Kraftwerk bis zum Haushalt?","chips":["Elektromotor","Generator","Wechselspannung","Transformator","Energieübertragung","Energieentwertung","Wirkungsgrad"],"lernen":[],"original":["E4: Untersuchung und Experiment","B2: Bewertungskriterien und Handlungsoptionen"],"zeit":"ca. 8 Ustd.","inhaltsfeld":"Energieversorgung","bereich":3},{"titel":"Energieversorgung der Zukunft","frage":"Wie können regenerative Energien zur Sicherung der Energieversorgung beitragen?","chips":["Kraftwerke","Regenerative Energieanlagen","Energieübertragung","Energieentwertung","Wirkungsgrad"],"lernen":[],"original":["UF4: Übertragung und Vernetzung … zur Schwerpunktsetzung Verantwortlicher Umgang mit Energie, Nachhaltigkeitsgedanke","K2: Informationsverarbeitung","B3: Abwägung und Entscheidung","B4: Stellungnahme und Reflexion"],"zeit":"ca. 5 Ustd.","inhaltsfeld":"Energieversorgung","bereich":3}]},"EF":{"uvs":[{"titel":"Kinematik (Bewegungslehre)","frage":"","chips":["Physik in Sport und Verkehr","Wie lassen sich Bewegungen vermessen?","Wie funktioniert eine Lichtschranke?","Wie lange bin ich beim freien Fall in der Luft?","Wie modelliere ich eine zu meinen Messdaten passende Formel?","Bei welchem Abwurfwinkel werfe ich am weitesten? ~ 30 Schulstunden"],"lernen":["erläutern die Größen Ort, Strecke, Geschwindigkeit, Beschleunigung, Masse, Kraft, Energie, Leistung, Impuls und ihre Beziehungen zueinander an unterschiedlichen Beispielen (S1, K4)","unterscheiden gleichförmige und gleichmäßig beschleunigte Bewegungen und erklären zugrunde liegende Ursachen auch am waagerechten Wurf (S2, S3, S7)","stellen Bewegungs- und Gleichgewichtszustände durch Komponentenzerlegung bzw. Vektoraddition dar (S1, S7, K7)","planen selbstständig Experimente zur quantitativen und qualitativen Untersuchung einfacher Bewegungen (E5, S5)","interpretieren die Messdatenauswertung von Bewegungen unter qualitativer Berücksichtigung von Messunsicherheiten (E7, S6, K9)","ermitteln anhand von Messdaten und Diagrammen funktionale Beziehungen zwischen mechanischen Größen (E6, E4, S6, K6)","bestimmen Geschwindigkeiten und Beschleunigungen mithilfe mathematischer Verfahren und digitaler Werkzeuge (E4, S7)","beurteilen die Güte digitaler Messungen von Bewegungsvorgängen mithilfe geeigneter Kriterien (B4, B5, E7, K7)","erläutern die Bedeutung von Bezugsystemen bei der Beschreibung von Bewegungen (S2, S3, K4)"],"original":["Der freie Fall","Bewegungsgleichungen","Ungestörte Überlagerung","Wurfbewegungen"],"zeit":"ca. 30 Stunden","inhaltsfeld":"","bereich":1},{"titel":"Dynamik","frage":"","chips":["Physik in Sport und Verkehr","Wie weit / wie lange bewegen sich einmal angestoßene Körper im Weltall? Und auf der Erde?","Welche Kraft ist nötig, um einen Körper zu beschleunigen? ~ 12 Schulstunden"],"lernen":["erläutern die Größen Ort, Strecke, Geschwindigkeit, Beschleunigung, Masse, Kraft, Energie, Leistung, Impuls und ihre Beziehungen zueinander an unterschiedlichen Beispielen (S1, K4)","analysieren in verschiedenen Kontexten Bewegungen qualitativ und quantitativ sowohl anhand wirkender Kräfte als auch aus energetischer Sicht (S1, S3, K7)","stellen Bewegungs- und Gleichgewichtszustände durch Komponentenzerlegung bzw. Vektoraddition dar (S1, S7, K7)","erklären mithilfe von Erhaltungssätzen sowie den Newton’schen Gesetzen Bewegungen (S1, E2, K4)","erläutern qualitativ die Auswirkungen von Reibungskräften bei realen Bewegungen (S1, S2, K4)","untersuchen Bewegungen mithilfe von Erhaltungssätzen sowie des Newton‘schen Kraftgesetzes (E4, K4)","begründen die Auswahl relevanter Größen bei der Analyse von Bewegungen (E3, E8, S5, K4)"],"original":["Die Grundgleichung der Mechanik","Wechselwirkung und Impuls","Das Kräftegleichgewicht","Träge und schwere Masse","Kräfte an der schiefen Ebene","Haftkräfte und Reibungskräfte"],"zeit":"ca. 12 Stunden","inhaltsfeld":"","bereich":1},{"titel":"Kreisbewegungen","frage":"","chips":["Zentripetale Kräfte","Trägheitskräfte"],"lernen":["erläutern auch quantitativ die kinematischen Größen der gleichförmigen Kreisbewegung Radius, Drehwinkel, Umlaufzeit, Umlauffrequenz, Bahngeschwindigkeit, Winkelgeschwindigkeit und Zentripetalbeschleunigung sowie deren Beziehungen zueinander an Beispielen (S1, S7, K4)","Was sind Trägheitskräfte? ~ 12 Schulstunden der Beschreibungsgrößen dieser Bewegung (S1, K3)","erläutern die Bedeutung von Bezugsystemen bei der Beschreibung von Bewegungen (S2, S3, K4)","interpretieren Messergebnisse aus Experimenten zur quantitativen Untersuchung der Zentripetalkraft (E4, E6, S6, K9)"],"original":["Zentripetale Kräfte","Trägheitskräfte"],"zeit":"ca. 12 Stunden","inhaltsfeld":"","bereich":1},{"titel":"Erhaltungssätze: Energie und Impuls","frage":"","chips":["Was ist ein Perpetuum mobile? Kann es funktionieren?","Wie lässt sich meine Sprungkraft ermitteln?","Wie groß ist meine Leistung beim Treppensteigen?","Aus welcher Höhe muss der Achterbahnwagen Anlauf nehmen, um im Looping nicht abzustürzen?","Energie und Impuls beim Auto-Crash ~ 18 Schulstunden"],"lernen":["erläutern die Größen Ort, Strecke, Geschwindigkeit, Beschleunigung, Masse, Kraft, Energie, Leistung, Impuls und ihre Beziehungen zueinander an unterschiedlichen Beispielen (S1, K4)","beschreiben eindimensionale Stoßvorgänge mit Impuls- und Energieübertragung (S1, S2, K3)","analysieren in verschiedenen Kontexten Bewegungen qualitativ und quantitativ sowohl anhand wirkender Kräfte als auch aus energetischer Sicht (S1, S3, K7)","erklären mithilfe von Erhaltungssätzen sowie den Newton’schen Gesetzen Bewegungen (S1, E2, K4)","untersuchen Bewegungen mithilfe von Erhaltungssätzen sowie des Newton‘schen Kraftgesetzes (E4, K4)","begründen die Auswahl relevanter Größen bei der Analyse von Bewegungen (E3, E8, S5, K4)","bewerten Ansätze aktueller und zukünftiger Mobilitätsentwicklung unter den Aspekten Sicherheit und mechanischer Energiebilanz (B6, K1, K5)","bewerten die Darstellung bekannter vorrangig mechanischer Phänomene in verschiedenen Medien bezüglich ihrer Relevanz und Richtigkeit (B1, B2, K2, K8)"],"original":["Kinetische und potenzielle Energie","Energieübertragung und Reibung","Energieerhaltung","Energiestrom - Leistung","Impuls und Impulserhaltung","Impulserhaltung in der Ebene","Rückstoßprinzip"],"zeit":"ca. 18 Stunden","inhaltsfeld":"","bereich":1},{"titel":"Gravitation und Bewegungen von Himmelskörpern","frage":"","chips":["Was ist über die Bewegung von Planeten bekannt?","Wie lässt sich die Masse der Sonne ermitteln?","Warum fällt der Mond nicht auf die Erde?","Jede Masse ist von einem Gravitationsfeld umgeben!","Wie kommen Ebbe und Flut zustande? ~ 12 Schulstunden"],"lernen":["beschreiben quantitativ die bei einer gleichförmigen Kreisbewegung wirkende Zentripetalkraft in Abhängigkeit der Beschreibungsgrößen dieser Bewegung (S1, K3)","erläutern die Abhängigkeiten der Massenanziehungskraft zweier Körper anhand des Newtonschen Gravitationsgesetzes im Rahmen des Feldkonzepts (S2, S3, K4)","erläutern die Bedeutung von Bezugsystemen bei der Beschreibung von Bewegungen (S2, S3, K4)","deuten eine vereinfachte Darstellung des Cavendish-Experiments qualitativ als direkten Nachweis der allgemeinen Massenanziehung (E3, E6)","ermitteln mithilfe der Kepler‘schen Gesetze und des Newton’schen Gravitationsgesetzes astronomische Größen (E4, E8)"],"original":["Das Sonnensystem","Die Keplerschen Gesetze","Das Gravitationsgesetz","Bewegungen im Gravitationsfeld","Die Gravitationsfeldstärke","Ebbe und Flut","Energie im Gravitationsfeld","Satelliten und Raumfahrt"],"zeit":"ca. 12 Stunden","inhaltsfeld":"","bereich":1},{"titel":"Weltbilder: Von der Antike zu Kepler und Newton","frage":"","chips":["Wichtige Weltbilder.","Auf welche Weisen wurden neue Erkenntnisse gewonnen? ~ 4 Stunden"],"lernen":["stellen Änderungen bei der Beschreibung von Bewegungen der Himmelskörper beim Übergang vom geozentrischen Weltbild zu modernen physikalischen Weltbildern auf der Basis zentraler astronomischer Beobachtungsergebnisse dar (S2, K1, K3, K10)","ordnen die Bedeutung des Wandels vom geozentrischen zum heliozentrischen Weltbild für die Emanzipation der Naturwissenschaften von der Religion ein (B8, K3)","beurteilen Informationen zu verschiedenen Weltbildern und deren Darstellungen aus unterschiedlichen Quellen hinsichtlich ihrer Vertrauenswürdigkeit und Relevanz (B2, K9, K10)"],"original":["Das heutige kosmologische Weltbild"],"zeit":"ca. 4 Stunden","inhaltsfeld":"","bereich":1},{"titel":"Elemente der Relativitätstheorie","frage":"","chips":["Was besagt Einsteins Relativitätstheorie (Auszüge)?","Welche Beobachtungen / Messungen stützen Einsteins Theorie?","Warum ist Einsteins Theorie so berühmt?","Wie lässt sich die Geschwindigkeit des Lichts bestimmen? ~ 8 Stunden"],"lernen":["erläutern die Bedeutung der Invarianz der Lichtgeschwindigkeit als Ausgangspunkt für die Entwicklung der speziellen Relativitätstheorie (S2, S3, K4)","erläutern die Bedeutung von Bezugsystemen bei der Beschreibung von Bewegungen (S2, S3, K4)","erklären mit dem Gedankenexperiment der Lichtuhr unter Verwendung grundlegender Prinzipien der speziellen Relativitätstheorie das Phänomen der Zeitdilatation zwischen bewegten Bezugssystemen qualitativ und quantitativ (S3, S5, S7)","ziehen das Ergebnis des Gedankenexperiments der Lichtuhr zur Widerlegung der absoluten Zeit heran (E9, E11, K9, B1)","beurteilen Informationen zu verschiedenen Weltbildern und deren Darstellungen aus unterschiedlichen Quellen hinsichtlich ihrer Vertrauenswürdigkeit und Relevanz (B2, K9, K10) Michelson-Interferometer 109"],"original":["Die Relativitätspostulate","Eigenzeit und Zeitdilatation","Myonen im Speicherring","Die Längenkontraktion","Masse und Energie"],"zeit":"ca. 8 Stunden","inhaltsfeld":"","bereich":5}]},"Q":{"kurs":{"GK":{"uvs":[{"titel":"Mechanische Schwingungen","frage":"","chips":["Schwingungen","Schwingungsvorgänge und Schwingungsgrößen","Periodendauern","Die harmonische Schwingung","Die Energie der harmonischen Schwingung","Energieabgabe – Dämpfung","Energiezufuhr – erzwungene Schwingungen","Überlagerung von Schwingungen"],"lernen":["erläutern die Eigenschaften harmonischer mechanischer Schwingungen, deren Beschreibungsgrößen Elongation, Amplitude, Periodendauer, Frequenz, sowie deren Zusammenhänge (S1, S3)","erläutern am Beispiel des Federpendels Energieumwandlungen harmonischer Schwingungen (S1, S2, K4)","konzipieren Experimente zur Abhängigkeit der Periodendauer von Einflussgrößen beim Federpendel und werten diese unter Anwendung digitaler Werkzeuge aus (E6, S4, K6), (MKR 1.2)"],"original":["Schwingungen","Schwingungsvorgänge und Schwingungsgrößen","Periodendauern","Die harmonische Schwingung","Die Energie der harmonischen Schwingung","Energieabgabe – Dämpfung","Energiezufuhr – erzwungene Schwingungen","Überlagerung von Schwingungen"],"zeit":null,"inhaltsfeld":"Klassische Wellen und geladene Teilchen in Feldern","bereich":1},{"titel":"Mechanische Wellen","frage":"","chips":["Wellenausbreitung","Von Schwingungen zur Welle","Wellen in der Ebene und im Raum","Eigenschaften von Wellen","Überlagerung von Wellen","Interferenz zweier Kreiswellen","Doppelspalt statt zwei Sender","Stehende Longitudinalwellen","Wellen bei Erdbeben","Doppler-Effekt"],"lernen":["erläutern die Eigenschaften harmonischer mechanischer Wellen, deren Beschreibungsgrößen Elongation, Amplitude, Periodendauer, Frequenz, Wellenlänge und Ausbreitungsgeschwindigkeit sowie deren Zusammenhänge (S1, S3)","erklären mithilfe der Superposition stehende Wellen (S1, E6, K3)","erläutern die lineare Polarisation als Unterscheidungsmerkmal von Longitudinal- und Transversalwellen (S2, E3, K8)","beurteilen Maßnahmen zur Störgeräuschreduzierung hinsichtlich deren Eignung (B7, K1, K5). (VB B Z1)","erläutern mithilfe der Wellenwanne qualitativ auf der Grundlage des Huygens’schen Prinzips Kreiswellen, ebene Wellen sowie die Phänomene Reflexion, Brechung, Beugung und Interferenz (S1, E4, K6)"],"original":["Wellenausbreitung","Von Schwingungen zur Welle","Wellen in der Ebene und im Raum","Eigenschaften von Wellen","Überlagerung von Wellen","Interferenz zweier Kreiswellen","Doppelspalt statt zwei Sender","Stehende Longitudinalwellen","Wellen bei Erdbeben","Doppler-Effekt"],"zeit":null,"inhaltsfeld":"Klassische Wellen und geladene Teilchen in Feldern","bereich":2},{"titel":"Wellenmodell des Lichts","frage":"","chips":["Licht als Welle","Beugung in der Wellenoptik","Interferenz mit Doppelspalt & Gitter","Polarisation von Licht","Einzelspalt und Interferenz","Interferometer","Michelson-Interferometer","Mach-Zehnder-Interferometer","Geschwindigkeit des Lichts","Messung der Lichtgeschwindigkeit"],"lernen":["weisen anhand des Interferenzmusters bei Doppelspalt- und Gitterversuchen mit mono- und polychromatischem Licht die Wellennatur des Lichts nach und bestimmen daraus Wellenlängen (E7, E8, K4).","erläutern die lineare Polarisation als Unterscheidungsmerkmal von Longitudinal- und Transversalwellen (S2, E3, K8)"],"original":["Licht als Welle","Beugung in der Wellenoptik","Interferenz mit Doppelspalt & Gitter","Polarisation von Licht","Einzelspalt und Interferenz","Interferometer","Michelson-Interferometer","Mach-Zehnder-Interferometer","Geschwindigkeit des Lichts","Messung der Lichtgeschwindigkeit","Die Brechzahl"],"zeit":null,"inhaltsfeld":"Klassische Wellen und geladene Teilchen in Feldern","bereich":2},{"titel":"Elektrische Felder","frage":"","chips":["Ladung und elektrisches Feld","Elektrostatik","Elektrische Felder und ihre Darstellung","Elektrische Feldstärke und Spannung","Geladene Teilchen im E-Feld","Die Elektronenkanone","Bewegung im Querfeld","Linearbeschleuniger","Die Elementarladung – Millikan-Versuch","Grundlagen einfacher Stromkreise"],"lernen":["stellen elektrische Feldlinienbilder von homogenen, Radial- und Dipolfeldern dar (S1, K6)","beschreiben Eigenschaften und Wirkungen homogener elektrischer Felder und erläutern die Definitionsgleichungen der elektrischen Feldstärke (S2, S3, E6)","erläutern am Beispiel des Plattenkondensators den Zusammenhang zwischen elektrischer Spannung und elektrischer Feldstärke im homogenen elektrischen Feld (S3)","berechnen Geschwindigkeitsänderungen von Ladungsträgern nach Durchlaufen einer elektrischen Spannung (S1, S3, K3)","erläutern die Erzeugung freier Elektronen durch den glühelektrischen Effekt, deren Beschleunigung beim Durchlaufen eines elektrischen (S4, S6, E6, K5)","entwickeln mithilfe des Superpositionsprinzips elektrische und magnetische Feldlinienbilder (E4, E6)","schließen aus der statistischen Auswertung einer vereinfachten Version des Millikan-Versuchs auf die Existenz einer kleinsten Ladung (E3, E11, K8)"],"original":["Ladung und elektrisches Feld","Elektrostatik","Elektrische Felder und ihre Darstellung","Elektrische Feldstärke und Spannung","Geladene Teilchen im E-Feld","Die Elektronenkanone","Bewegung im Querfeld","Linearbeschleuniger","Die Elementarladung – Millikan-Versuch","Grundlagen einfacher Stromkreise","Radialsymmetrisches Feld und Coulombsches Gesetz","Ladung und Feldstärke – die elektrische Feldkonstante ε0"],"zeit":null,"inhaltsfeld":"Klassische Wellen und geladene Teilchen in Feldern","bereich":3},{"titel":"Magnetische Felder","frage":"","chips":["Kraftwirkung des magnetischen Feldes","Das magnetische Feld","Elektrischer Strom und Magnetfeld","Stärke des Magnetfelds","Die Lorentzkraft","Die Masse geladener Teilchen","Zyklotron und Synchrotron","Hall-Effekt","Magnetfeld von Leiter und Spule","Magnetfeld im Innern einer Spule"],"lernen":["stellen magnetische Feldlinienbilder von homogenen und Dipolfeldern dar (S1, K6)","beschreiben Eigenschaften und Wirkungen homogener magnetischer Felder und erläutern die Definitionsgleichungen der magnetischen Flussdichte (S2, S3, E6)","erläutern am Fadenstrahlrohr die Erzeugung freier Elektronen durch den glühelektrischen Effekt, deren Beschleunigung beim Durchlaufen eines elektrischen Felds sowie deren Ablenkung im homogenen magnetischen Feld durch die Lorentzkraft (S4, S6, E6, K5)","entwickeln mithilfe des Superpositionsprinzips magnetische Feldlinienbilder (E4, E6)","modellieren mathematisch die Beobachtungen am Fadenstrahlrohr und ermitteln aus den Messergebnissen die Elektronenmasse (E4, E9, K7)","wenden eine Messmethode zur Bestimmung der magnetischen Flussdichte an (E3, K6)","erschließen sich die Funktionsweise des Zyklotrons auch mithilfe von Simulationen (E1, E10, S1, K1)"],"original":["Kraftwirkung des magnetischen Feldes","Das magnetische Feld","Elektrischer Strom und Magnetfeld","Stärke des Magnetfelds","Die Lorentzkraft","Die Masse geladener Teilchen","Zyklotron und Synchrotron","Hall-Effekt","Magnetfeld von Leiter und Spule","Magnetfeld im Innern einer Spule","Magnetfeld eines Leiters"],"zeit":null,"inhaltsfeld":"Klassische Wellen und geladene Teilchen in Feldern","bereich":3},{"titel":"Quantenobjekte","frage":"","chips":["Eigenschaften von Licht","Der Lichtelektrische Effekt","Lichtquantenhypothese","Energie von Fotoelektronen","Impuls eines Photons","Materie und Interferenz","Doppelspalt und Elektronen","Elektronenbeugung","Experimente mit einzelnen Quantenobjekten","Wahrscheinlichkeiten"],"lernen":["erläutern anhand eines Experiments zum Photoeffekt den Quantencharakter von Licht (S1, E9, K3)","leiten anhand eines Experiments zum Photoeffekt den Zusammenhang von Energie, Wellenlänge und Frequenz von Photonen ab (E6, S6)","stellen die Lichtquanten- und De-Broglie-Hypothese sowie deren Unterschied zur klassischen Betrachtungsweise dar (S1, S2, E8, K4)","berechnen Energie und Impuls über Frequenz und Wellenlänge für Quantenobjekte (S3)","wenden die De-Broglie-Hypothese an, um das Beugungsbild beim Doppelspaltversuch mit Elektronen quantitativ zu erklären (S1, S5, E6, K9)","beurteilen an Beispielen die Grenzen und Gültigkeitsbereiche von Wellen- und Teilchenmodellen für Licht und Elektronen (E9, E11, K8)","erläutern die Determiniertheit der Zufallsverteilung der diskreten Energieabgabe beim Doppelspaltexperiment mit stark intensitätsreduziertem Licht (S3, E6, K3)","untersuchen mithilfe von Simulationen das Verhalten von Quantenobjekten am Doppelspalt (E4, E8, K6, K7), (MKR 1.2)","erklären an geeigneten Darstellungen die Wahrscheinlichkeitsinterpretation für Quantenobjekte (S1, K3)","erläutern bei Quantenobjekten die „Welcher-Weg“-Information als Bedingung für das Auftreten oder Ausbleiben eines Interferenzmusters in einem Interferenzexperiment (S2, K4)","beurteilen an Beispielen die Grenzen und Gültigkeitsbereiche von Wellen- und Teilchenmodellen für Licht und Elektronen (E9, E11, K8)","erläutern die Problematik der Übertragbarkeit von Begriffen aus der Anschauungswelt auf Quantenobjekte (B1, K8)","stellen die Kontroverse um den Realitätsbegriff der Kopenhagener Deutung dar (B8, K9)","beschreiben anhand quantenphysikalischer Betrachtungen die Grenzen der physikalischen Erkenntnisfähigkeit (B8, E11, K8)."],"original":["Eigenschaften von Licht","Der Lichtelektrische Effekt","Lichtquantenhypothese","Energie von Fotoelektronen","Impuls eines Photons","Materie und Interferenz","Doppelspalt und Elektronen","Elektronenbeugung","Experimente mit einzelnen Quantenobjekten","Wahrscheinlichkeiten","Tunneleffekt","Schrödingers Katze","Die Unbestimmtheitsrelation","Verschränkte Zustände","Delayed-Choise-Versuche","Datenübermittlung mit polarisierten Photonen"],"zeit":null,"inhaltsfeld":"Quantenobjekte","bereich":5},{"titel":"Phänomen Induktion","frage":"","chips":["Phänomen Induktion","Induktionsversuche","Induktion und magnetischer Fluss","Magnetischer Fluss und Induktionsgesetz","Die Lorentzkraft als Ursache von Induktion","Die lenzsche Regel","Wirbelströme","Selbstinduktion"],"lernen":["führen Induktionserscheinungen bei einer Leiterschleife auf die zeitliche Änderung der magnetischen Flussdichte oder die zeitliche Änderung der durchsetzten Fläche zurück (S1, S2, K4)","modellieren mathematisch das Entstehen von Induktionsspannungen für die beiden Spezialfälle einer zeitlich konstanten Fläche und einer zeitlich konstanten magnetischen Flussdichte (E4, E6, K7)","beschreiben das Induktionsgesetz mit der mittleren Änderungsrate und in differentieller Form des magnetischen Flusses (S7)","erläutern das Auftreten von Induktionsspannungen am Beispiel der Leiterschaukel durch die Wirkung der Lorentzkraft auf bewegte Ladungsträger (S3, S4, K4)"],"original":["Phänomen Induktion","Induktionsversuche","Induktion und magnetischer Fluss","Magnetischer Fluss und Induktionsgesetz","Die Lorentzkraft als Ursache von Induktion","Die lenzsche Regel","Wirbelströme","Selbstinduktion"],"zeit":null,"inhaltsfeld":"Elektrodynamik und Energieübertragung","bereich":3},{"titel":"Energieversorgung","frage":"","chips":["Wechselstrom und Energietransport","Elektrische Leistung und Energie","Spannung und Stromstärke im Wechselstromkreis","Der Transformator","Fernleitung elektrischer Energie","Phasenbeziehungen zwischen Spannung und Strom","Wechselstromwiderstände"],"lernen":["erklären das Entstehen von sinusförmigen Wechselspannungen in Generatoren mithilfe des Induktionsgesetzes (E6, E10, K3, K4)","untersuchen die gezielte Veränderung elektrischer Spannungen und Stromstärken durch Transformatoren mithilfe angeleiteter Experimente als Beispiel für die technische Anwendung der Induktion (S1, S4, E6, K8)","erklären am physikalischen Modellexperiment zu Freileitungen technologische Prinzipien der Bereitstellung und Weiterleitung von elektrischer Energie (S1, S3, K8)","beurteilen ausgewählte Beispiele zur Energiebereitstellung und -umwandlung unter technischen und ökologischen Aspekten (B3, B6, K8, K10), (VB ÜB Z2)","beurteilen das Potential der Energierückgewinnung auf der Basis von Induktionsphänomenen bei elektrischen Antriebssystemen (B7, K2)."],"original":["Wechselstrom und Energietransport","Elektrische Leistung und Energie","Spannung und Stromstärke im Wechselstromkreis","Der Transformator","Fernleitung elektrischer Energie","Phasenbeziehungen zwischen Spannung und Strom","Wechselstromwiderstände"],"zeit":null,"inhaltsfeld":"Elektrodynamik und Energieübertragung","bereich":3},{"titel":"Elektromagnetische Schwingungen","frage":"","chips":["Der Kondensator als Ladungsspeicher","Elektrische Schwingungen","Der Schwingkreis","Idee der Rückkopplung","Elektromagnetische Wellen","Entstehung elektromagnetischer Wellen – Hertzscher Dipol","Elektromagnetisches Spektrum","Modulation","Eigenschaften elektromagnetischer Wellen (Mikrowellen)"],"lernen":["beschreiben die Kapazität als Kenngröße eines Kondensators und bestimmen diese für den Spezialfall des Plattenkondensators in Abhängigkeit seiner geometrischen Daten (S1, S3)","untersuchen den Auf- und Entladevorgang bei Kondensatoren unter Anleitung experimentell (S4, S6, K6)","modellieren mathematisch den zeitlichen Verlauf der Stromstärke bei Auf- und Entladevorgängen bei Kondensatoren (E4, E6, S7)","interpretieren den Flächeninhalt zwischen Graph und Abszissenachse im Q-U-Diagramm als Energiegehalt des Plattenkondensators (E6, K8)","beurteilen den Einsatz des Kondensators als Energiespeicher in ausgewählten alltäglichen Situationen (B3, B4, K9).","erläutern qualitativ die bei einer elektromagnetischen Schwingung in der Spule und am Kondensator ablaufenden physikalischen Prozesse (S1, S4, E4)"],"original":["Der Kondensator als Ladungsspeicher","Elektrische Schwingungen","Der Schwingkreis","Idee der Rückkopplung","Elektromagnetische Wellen","Entstehung elektromagnetischer Wellen – Hertzscher Dipol","Elektromagnetisches Spektrum","Modulation","Eigenschaften elektromagnetischer Wellen (Mikrowellen)"],"zeit":null,"inhaltsfeld":"Elektrodynamik und Energieübertragung","bereich":3},{"titel":"Atomphysik","frage":"","chips":["Entwicklung der Vorstellungen vom Atom","Historische Modelle","Quantenhafte Emission und Absorption","Franck-Hertz-Versuch","Diskrete Energieniveaus","Atommodell der Quantenphysik","Linearer Potentialtopf","Anwendungen","Röntgenstrahlung","Lumineszenz (Anwendung zu 1.1.2)"],"lernen":["erklären die Energie emittierter und absorbierter Photonen am Beispiel von Linienspektren leuchtender Gase und Fraunhofer’scher Linien mit den unterschiedlichen Energieniveaus in der Atomhülle (S1, S3, E6, K4)","interpretieren die Messergebnisse des Franck-Hertz-Versuchs (E6, E8, K8)","stellen an der historischen Entwicklung der Atommodelle die spezifischen Eigenschaften und Grenzen naturwissenschaftlicher Modelle heraus (B8, E9).","identifizieren vorhandene Stoffe in der Sonnen- und Erdatmosphäre anhand von Spektraltafeln des Sonnenspektrums (E3, E6, K1)","beschreiben die Energiewerte für das Wasserstoffatom mithilfe eines quantenphysikalischen Atommodells (S2)","interpretieren die Orbitale des Wasserstoffatoms als Veranschaulichung der Nachweiswahrscheinlichkeiten für das Elektron (S2, K8)","erklären die Entstehung von Bremsstrahlung und charakteristischer Röntgenstrahlung (S3, E6, K4)","erklären das charakteristische Röntgenspektrum mit den Energieniveaus der Atomhülle (E6)"],"original":["Entwicklung der Vorstellungen vom Atom","Historische Modelle","Quantenhafte Emission und Absorption","Franck-Hertz-Versuch","Diskrete Energieniveaus","Atommodell der Quantenphysik","Linearer Potentialtopf","Anwendungen","Röntgenstrahlung","Lumineszenz (Anwendung zu 1.1.2)","Der Laser - Funktionsprinzip"],"zeit":null,"inhaltsfeld":"Strahlung und Materie","bereich":5},{"titel":"Kerne und Teilchen","frage":"","chips":["Strahlung und Kernaufbau","Ionisierende Strahlung","Aufbau eines Atomkerns","Arten der Kernumwandlung","Quellen","Das Zerfallsgesetz","Abstand und Abschirmung","Strahlenmessgrößen","Biologische Wirkung","Zählung und Energiemessung"],"lernen":["unterscheiden α-, β-, γ- Strahlung, Röntgenstrahlung und Schwerionenstrahlung als Arten ionisierender Strahlung (S1)","ordnen verschiedene Frequenzbereiche dem elektromagnetischen Spektrum zu (S1, K6)","erläutern den Begriff der Radioaktivität und zugehörige Kernumwandlungsprozesse auch mithilfe der Nuklidkarte (S1, S2)","erläutern qualitativ den Aufbau eines Atomkerns aus Nukleonen, den Aufbau der Nukleonen aus Quarks sowie die Rolle der starken Wechselwirkung für die Stabilität des Kerns (S1, S2)","wenden das zeitliche Zerfallsgesetz für den radioaktiven Zerfall an (S5, S6, K6)","ermitteln im Falle eines einstufigen radioaktiven Zerfalls anhand der gemessenen Zählraten die Halbwertszeit (E5, E8, S6)","untersuchen experimentell anhand der Zählraten bei Absorptionsexperimenten unterschiedliche Arten ionisierender Strahlung (E3, E5, S4, S5)","begründen wesentliche biologisch-medizinische Wirkungen ionisierender Strahlung mit deren typischen physikalischen Eigenschaften (E6, K3)","quantifizieren mit der Größe der effektiven Dosis die Wirkung ionisierender Strahlung und bewerten daraus abgeleitete Strahlenschutzmaßnahmen (E8, S3, B2).","bewerten die Bedeutung hochenergetischer Strahlung hinsichtlich der Gesundheitsgefährdung sowie ihres Nutzens bei medizinischer Diagnose und Therapie (B5, B6, K1, K10).","erläutern den Aufbau und die Funktionsweise des Geiger-Müller-Zählrohrs als Nachweisgerät für ionisierende Strahlung (S4, S5, K8)","erklären anhand des Zusammenhangs E = m c² die Grundlagen der Energiefreisetzung bei Kernspaltung und - fusion über den Massendefekt (S1) (S1)","erläutern qualitativ an der β−-Umwandlung die Entstehung der Neutrinos mithilfe der schwachen Wechselwirkung und ihrer Austauschteilchen (S1, S2, K4)","vergleichen verschiedene Vorstellungen von der Materie mit den Konzepten der modernen Physik (B8, K9)."],"original":["Strahlung und Kernaufbau","Ionisierende Strahlung","Aufbau eines Atomkerns","Arten der Kernumwandlung","Quellen","Das Zerfallsgesetz","Abstand und Abschirmung","Strahlenmessgrößen","Biologische Wirkung","Zählung und Energiemessung","Massendifferenz und Energie","Kernspaltung & Kernfusion","Kernreaktor","Modelle und Anwendungen","Kernmodell der Quantenphysik","Elementarteilchen – Konzepte und Ideen"],"zeit":null,"inhaltsfeld":"Strahlung und Materie","bereich":5}]},"LK":null}}}}</script>
 <script>
 "use strict";
 const DATA = JSON.parse(document.getElementById("physik-daten").textContent);
@@ -1323,11 +218,11 @@ const LABEL = {"6":"Klasse 6","8":"Klasse 8","9":"Klasse 9","10":"Klasse 10",
                "EF":"Einführungsphase (EF)","Q":"Qualifikationsphase (Q1/Q2)"};
 
 const INTROS = {
-  "6":"Der Einstieg in die Physik: Temperatur und Wärme, elektrischer Strom und Magnetismus, Schall und Hören, Licht und Sehen.",
+  "6":"Das erste Physikjahr: Temperatur und Wärme, elektrischer Strom und Magnetismus, Schall und Hören, Licht und Sehen.",
   "8":"Optische Instrumente von der Lochkamera bis zum Fernrohr, Reflexion und Brechung, dazu Bewegung, Kraft und Energie.",
   "9":"Druck und Auftrieb in Flüssigkeiten und Gasen, danach die Grundlagen der Elektrizitätslehre.",
   "10":"Ionisierende Strahlung und Kernenergie, Elektromotor, Generator und die Energieversorgung der Zukunft.",
-  "EF":"Mechanik als Fundament der Oberstufenphysik: Bewegungen, Kräfte, Erhaltungssätze, Gravitation, dazu Weltbilder und ein Ausblick auf die Relativitätstheorie.",
+  "EF":"Mechanik: Bewegungen, Kräfte, Erhaltungssätze und Gravitation, dazu Weltbilder und ein erster Blick auf die Relativitätstheorie.",
   "Q":"Schwingungen und Wellen, elektrische und magnetische Felder, Quantenobjekte, Induktion und Energieversorgung, Atom- und Kernphysik."
 };
 
@@ -1338,11 +233,15 @@ const ORIG_LABEL = {
 const ROMAN = ["I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII"];
 
 function esc(t){const d=document.createElement("div");d.textContent=t;return d.innerHTML;}
+/* Kurze Statusmeldung fuer Screenreader statt Vorlesen der kompletten Liste */
+const statusEl=document.getElementById("status");
+function melde(t){ if(statusEl) statusEl.textContent=t; }
 /* Seiten- und Kompetenzkürzel-Verweise für die Lese-Ansicht entfernen */
 function lesbar(t){
   return t.replace(/\(S\.?\s?[^)]*\)/g,"")
-          .replace(/\(([SEKB]\d|UF\d)[^)]*\)/g,"")
-          .replace(/\s{2,}/g," ").trim().replace(/[,.]$/,"");
+          .replace(/\(([SEKB]\d|UF\d|MKR|VB)[^)]*\)/g,"")
+          .replace(/\s+([,.;:])/g,"$1")
+          .replace(/\s{2,}/g," ").trim().replace(/[,.;:]+$/,"");
 }
 
 /* ---------- Legende ---------- */
@@ -1378,7 +277,7 @@ function select(stufe, kurs, push){
   render();
   if(push){
     const h = DATA.stufen[stufe].kurs ? `#${stufe.toLowerCase()}-${currentKurs.toLowerCase()}` : `#${stufe.toLowerCase()}`;
-    history.replaceState(null,"",h);
+    if(location.hash!==h) location.hash=h;   /* erzeugt einen Verlaufseintrag */
     view.scrollIntoView({behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto":"smooth", block:"start"});
   }
 }
@@ -1402,7 +301,8 @@ function render(){
     view.innerHTML = head + pfad +
       `<div class="hinweis"><strong>Leistungskurs: in Bearbeitung</strong>
        Der schulinterne Lehrplan für den Physik-Leistungskurs wird zurzeit erstellt und hier später ergänzt.
-       Bis dahin gibt der Grundkurs-Lehrplan einen guten Überblick über die Themen der Qualifikationsphase.</div>`;
+       Die Themen der Qualifikationsphase stehen im Grundkurs-Lehrplan.</div>`;
+    melde(`${LABEL[currentStufe]}, Leistungskurs: in Bearbeitung`);
     bindKurs();
     return;
   }
@@ -1437,6 +337,7 @@ function render(){
   }).join("");
 
   view.innerHTML = head + pfad + intro + `<div class="uv-list">${list}</div>`;
+  melde(`${LABEL[currentStufe]}${d.kurs?", "+(currentKurs==="GK"?"Grundkurs":"Leistungskurs"):""}: ${uvs.length} Unterrichtsvorhaben`);
   bindKurs();
   view.querySelectorAll(".uv-head").forEach(btn=>
     btn.addEventListener("click",()=>{
@@ -1459,7 +360,7 @@ function bindKurs(){
   function standbild(){
     const img=document.createElement("img");
     img.src="pkg-intro-physik-ende.jpg";
-    img.alt="Schulinternes Curriculum Physik, Paul-Klee-Gymnasium Overath";
+    img.alt="";
     img.className="intro-film";
     img.width=1280; img.height=548;
     v.replaceWith(img);
@@ -1473,16 +374,22 @@ function bindKurs(){
 })();
 
 /* ---------- Deep-Link ---------- */
-(function init(){
+function ausHash(){
   const h=(location.hash||"").replace("#","").toLowerCase();
-  let st="6", kurs=null;
   for(const s of STUFEN){
-    if(h===s.toLowerCase()){st=s;break;}
-    if(h===s.toLowerCase()+"-gk"){st=s;kurs="GK";break;}
-    if(h===s.toLowerCase()+"-lk"){st=s;kurs="LK";break;}
+    if(h===s.toLowerCase()) return [s,null];
+    if(h===s.toLowerCase()+"-gk") return [s,"GK"];
+    if(h===s.toLowerCase()+"-lk") return [s,"LK"];
   }
-  select(st,kurs,false);
-})();
+  return ["6",null];
+}
+(function init(){ const [st,kurs]=ausHash(); select(st,kurs,false); })();
+
+/* Vor/Zurück im Browser und von außen gesetzte Links berücksichtigen */
+addEventListener("hashchange",()=>{
+  const [st,kurs]=ausHash();
+  if(st!==currentStufe || (kurs && kurs!==currentKurs)) select(st,kurs,false);
+});
 </script>
 </body>
 </html>
